@@ -1,5 +1,5 @@
-frontend/target/
-backend/target/
+/frontend/target/
+/backend/target/
 target/
 !.mvn/wrapper/maven-wrapper.jar
 *.class
