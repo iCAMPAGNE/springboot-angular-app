@@ -10,6 +10,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 public class SpringbootAngularAppMain extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
+        System.setProperty("server.servlet.context-path", "/springboot-angular-app");
 
         SpringApplication.run(SpringbootAngularAppMain.class, args);
         try {
@@ -21,6 +22,6 @@ public class SpringbootAngularAppMain extends SpringBootServletInitializer {
 
     private static void openHomePage() throws IOException {
         Runtime rt = Runtime.getRuntime();
-        rt.exec("rundll32 url.dll,FileProtocolHandler " + "http://localhost:8092");
+        rt.exec("rundll32 url.dll,FileProtocolHandler " + "http://localhost:8092/springboot-angular-app");
     }
 }
