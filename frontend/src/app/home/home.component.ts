@@ -28,6 +28,17 @@ export class HomeComponent implements OnInit {
           },
           error: (err: any) => this.version = 'Retrieving version from backend failed.'
       });
+
+      this.backendService.getOverviewObserver().subscribe({
+          next(item: string) {
+              console.log('Current item: ', item);
+          },
+          complete() {
+              console.log('Completed');
+          },
+          error(msg: Error) {
+              console.log('Error Getting items: ', msg);
+          }});
   }
 
 }

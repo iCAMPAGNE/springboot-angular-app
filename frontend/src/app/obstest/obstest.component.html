@@ -1,0 +1,14 @@
+<navigatie-menu></navigatie-menu>
+
+<div class="container" *ngrxLet="things$; let thing">{{thing}}</div>
+
+<p>obstest works!</p>
+
+<div class="naam">{{naam}}</div>
+
+*ngrxLet
+<div class="things" *ngrxLet="things$ as things">Thing is: {{things}}</div>
+<br>
+*ngFor
+<div class="thing" *ngFor="let thing of things$ | async">{{thing}}</div>
+
