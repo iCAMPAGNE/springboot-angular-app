@@ -13,6 +13,7 @@ export class NavigatieMenuComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+      this.currentPage = this.router.url.split('/')[1];
   }
 
 }
