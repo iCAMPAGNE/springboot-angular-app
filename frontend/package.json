@@ -1,11 +1,11 @@
 {
-  "name": "SpringbootAngularApp",
-  "version": "0.0.1",
+  "name": "springboot-angular-app",
+  "version": "0.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json -o",
     "build": "ng build",
-    "build-p": "ng build --prod --base-href /springboot-angular-app/",
+    "build-p": "ng build --configuration production --base-href /springboot-angular-app/",
     "test": "ng test --browsers ChromeHeadless --watch=false --karma-config=karma.conf.js",
     "testcoverage": "ng test --browsers ChromeHeadless --watch=false --code-coverage --karma-config=karma.conf.js",
     "lint": "ng lint",
