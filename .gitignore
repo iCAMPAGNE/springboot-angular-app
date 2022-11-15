@@ -4,7 +4,6 @@ node_modules
 .project
 .settings
 .classpath
-.idea
 node/
 node_modules/
 lib/
@@ -12,3 +11,11 @@ FilmGezien.iml
 backend/backend.iml
 daily-email-content.html
 start-me.sh
+
+
+### IntelliJ IDEA ###
+/.idea
+*.iws
+*.iml
+*.ipr
+
