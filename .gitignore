@@ -18,4 +18,5 @@ start-me.sh
 *.iws
 *.iml
 *.ipr
+**/*.iml
 

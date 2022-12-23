@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {BackendService} from "../services/backend.service";
+import {BackendService} from "../../services/backend.service";
 
 interface AppVersion {
     version: string;
@@ -7,8 +7,7 @@ interface AppVersion {
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
 

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable, of, Subject} from "rxjs/index";
+import {Observable, of, Subject} from "rxjs";
 
 @Component({
   selector: 'app-obstest',
-  templateUrl: './obstest.component.html',
-  styleUrls: ['./obstest.component.scss']
+  templateUrl: './obstest.component.html'
 })
 export class ObstestComponent implements OnInit {
   naam: string = 'Frans';

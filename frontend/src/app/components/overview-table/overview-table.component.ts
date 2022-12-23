@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable, Observer, of} from "rxjs/index";
-import {BackendService} from "../services/backend.service";
+import {Observable, Observer, of} from "rxjs";
+import {BackendService} from "../../services/backend.service";
 
 @Component({
   selector: 'app-overview-table',
-  templateUrl: './overview-table.component.html',
-  styleUrls: ['./overview-table.component.scss']
+  templateUrl: './overview-table.component.html'
 })
 export class OverviewTableComponent implements OnInit {
 
