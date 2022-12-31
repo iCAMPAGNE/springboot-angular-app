@@ -1,0 +1,24 @@
+.time-span {
+    margin: 50px;
+    display: -webkit-flex;
+    display: flex;
+    width: 500px;
+    height: 100px;
+    overflow-x: scroll;
+    &:first-child {
+    }
+
+    .minute {
+        height: 100%;
+        border-left: solid black 1px;
+    }
+    .minute-div:nth-child(even) .minute {
+        background-color: dodgerblue;
+    }
+    .minute-div:nth-child(odd) .minute {
+        background-color: deepskyblue;
+    }
+    .minute-div:last-child .minute {
+//        border-right: solid black 1px;
+    }
+}

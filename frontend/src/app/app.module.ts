@@ -8,6 +8,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { OverviewTableComponent } from './components/overview-table/overview-table.component';
 import {NavigatieMenuComponent} from "./components/navigatie-menu/navigatie-menu.component";
 import {ObstestComponent} from "./components/obstest/obstest.component";
+import { MousewheelScrollingComponent } from './components/mousewheel-scrolling/mousewheel-scrolling.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {ObstestComponent} from "./components/obstest/obstest.component";
     NavigatieMenuComponent,
     HomeComponent,
     OverviewTableComponent,
-    ObstestComponent
+    ObstestComponent,
+    MousewheelScrollingComponent
   ],
   imports: [
     BrowserModule,
