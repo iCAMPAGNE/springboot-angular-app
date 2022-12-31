@@ -8,18 +8,16 @@ export class MousewheelScrollingComponent implements OnInit, AfterViewInit {
 
   @ViewChild('timeSpan') timeSpan: ElementRef<HTMLInputElement> | undefined;
 
+  zoomFactor: number = 5;
   clientWidth: number = 0;
 
-  marginLeft:number = 0;
+  marginLeft: number = 0;
   minutes: number[] = Array.from(Array(100).keys());
   minuteWidth: number = 25;
   scrollLeft:number = 0;
   printNr: number = 0;
 
-  constructor(private elementRef: ElementRef) {  }
-
   ngOnInit(): void {
-    this.minutes.forEach(minute => minute = 1);
   }
 
   ngAfterViewInit(): void {
@@ -40,13 +38,13 @@ export class MousewheelScrollingComponent implements OnInit, AfterViewInit {
       const timeSpanEl = this.timeSpan.nativeElement;
       this.scrollLeft = timeSpanEl.scrollLeft;
 
-      if (event.deltaY > 0 && this.minuteWidth > 5) {
-        this.minuteWidth -= 5;
-        factor = -5;
+      if (event.deltaY > 0 && this.minuteWidth > this.zoomFactor) {
+        this.minuteWidth -= this.zoomFactor;
+        factor = -this.zoomFactor;
       }
       if (event.deltaY < 0) {
-        this.minuteWidth += 5;
-        factor = 5;
+        this.minuteWidth += this.zoomFactor;
+        factor = this.zoomFactor;
       }
       timeSpanEl.scrollTo(timeSpanEl.scrollLeft + factor * (timeSpanEl.scrollLeft + (event.clientX - this.clientWidth - this.marginLeft) + timeSpanEl.clientWidth / 2) / currentMinuteWidth, 0);
     }

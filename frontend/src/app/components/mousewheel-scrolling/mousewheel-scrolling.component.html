@@ -1,5 +1,3 @@
 <div class="time-span" #timeSpan>
-    <div *ngFor="let minute of minutes; let i = index;" class="minute-div">
-        <div class="minute" [style.width.px]="minuteWidth - 1">{{minute}}</div>
-    </div>
+    <div *ngFor="let minute of minutes; let i = index;" class="minute" [style.min-width.px]="minuteWidth - 1">{{minute}}</div>
 </div>
