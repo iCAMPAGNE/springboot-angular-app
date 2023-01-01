@@ -1,3 +1,6 @@
 <div class="time-span" #timeSpan>
+    <div *ngFor="let ship of ships" class="ships">
+        <div class="ship" [style.margin-left.px]="ship.pos.x * minuteWidth" [style.margin-top.px]="ship.pos.y" [style.width.px]="ship.length * minuteWidth"></div>
+    </div>
     <div *ngFor="let minute of minutes; let i = index;" class="minute" [style.min-width.px]="minuteWidth - 1">{{minute}}</div>
 </div>

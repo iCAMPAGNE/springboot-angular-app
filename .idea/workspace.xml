@@ -4,29 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68a210c6-562a-4268-b56e-68ff2b381646" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="68a210c6-562a-4268-b56e-68ff2b381646" name="Default" comment="Simplified mousewheel-scrolling template">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/home/home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/home/home.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/home/home.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/home/home.component.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/home/home.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/navigatie-menu/navigatie-menu.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/navigatie-menu/navigatie-menu.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/navigatie-menu/navigatie-menu.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/navigatie-menu/navigatie-menu.component.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/navigatie-menu/navigatie-menu.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/navigatie-menu/navigatie-menu.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/obstest/obstest.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/obstest/obstest.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/obstest/obstest.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/obstest/obstest.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/obstest/obstest.component.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/obstest/obstest.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/obstest/obstest.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/overview-table/overview-table.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/overview-table/overview-table.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/overview-table/overview-table.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/overview-table/overview-table.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/overview-table/overview-table.component.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/overview-table/overview-table.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/overview-table/overview-table.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/backend.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/services/backend.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/mousewheel-scrolling/mousewheel-scrolling.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/mousewheel-scrolling/mousewheel-scrolling.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/mousewheel-scrolling/mousewheel-scrolling.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/mousewheel-scrolling/mousewheel-scrolling.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/stylesheets/components/_timeSpan.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/stylesheets/components/_timeSpan.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +19,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -155,6 +138,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
@@ -311,7 +295,12 @@
       <workItem from="1670867640403" duration="3264000" />
       <workItem from="1670950232344" duration="57000" />
       <workItem from="1671746301082" duration="601000" />
-      <workItem from="1671800044731" duration="1779000" />
+      <workItem from="1671800044731" duration="18331000" />
+      <workItem from="1671864695327" duration="5690000" />
+      <workItem from="1672151049710" duration="23703000" />
+      <workItem from="1672212054489" duration="2765000" />
+      <workItem from="1672495810781" duration="16876000" />
+      <workItem from="1672572816097" duration="5583000" />
     </task>
     <task id="LOCAL-00001" summary="Deployable at Tomcat.">
       <created>1640634260750</created>
@@ -355,7 +344,28 @@
       <option name="project" value="LOCAL" />
       <updated>1654287482026</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Moved components to components, removed component scss files">
+      <created>1671807123729</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1671807123729</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added mousewheel-scrolling component">
+      <created>1672498756186</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1672498756186</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Simplified mousewheel-scrolling template">
+      <created>1672499845342</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1672499845342</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -412,7 +422,10 @@
     <MESSAGE value="overview-table" />
     <MESSAGE value="Menu" />
     <MESSAGE value="ignore .idea" />
-    <option name="LAST_COMMIT_MESSAGE" value="ignore .idea" />
+    <MESSAGE value="Moved components to components, removed component scss files" />
+    <MESSAGE value="Added mousewheel-scrolling component" />
+    <MESSAGE value="Simplified mousewheel-scrolling template" />
+    <option name="LAST_COMMIT_MESSAGE" value="Simplified mousewheel-scrolling template" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

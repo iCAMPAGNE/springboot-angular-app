@@ -3,7 +3,7 @@
     display: -webkit-flex;
     display: flex;
     width: 500px;
-    height: 100px;
+    height: 200px;
     overflow-x: scroll;
 
     .minute {
@@ -15,6 +15,16 @@
         }
         &:nth-child(odd) {
             background-color: deepskyblue;
+        }
+    }
+
+    .ships {
+        position: relative;
+        width: 0;
+        margin-top:20px;
+        .ship {
+            height: 20px;
+            background-color: yellow;
         }
     }
 }
