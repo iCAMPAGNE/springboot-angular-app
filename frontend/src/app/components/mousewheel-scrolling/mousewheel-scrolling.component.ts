@@ -56,7 +56,6 @@ export class MousewheelScrollingComponent implements OnInit, AfterViewInit {
       if (this.timeSpan && this.timeSpan.nativeElement) {
         const timeSpanElement = this.timeSpan.nativeElement;
         timeSpanElement.scrollTo(this.scrollLeft + factor * (this.scrollLeft + (event.clientX - this.clientMiddle - this.marginLeft) + timeSpanElement.clientWidth / 2) / currentMinuteWidth , 0);
-//        this.ship.pos += factor * this.minuteWidth + 225;
 
         this.printValues(event);
       }
