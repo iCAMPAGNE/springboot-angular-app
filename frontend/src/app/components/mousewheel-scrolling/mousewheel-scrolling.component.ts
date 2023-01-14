@@ -49,7 +49,8 @@ export class MousewheelScrollingComponent implements OnInit, AfterViewInit {
         this.minuteWidth += this.zoomFactor;
         factor = this.zoomFactor;
       }
-      timeSpanElement.scrollTo(timeSpanElement.scrollLeft + factor * (timeSpanElement.scrollLeft + (event.clientX - this.clientMiddle - this.marginLeft) + timeSpanElement.clientWidth / 2) / currentMinuteWidth, 0);
+     timeSpanElement.scrollTo(timeSpanElement.scrollLeft + factor * (timeSpanElement.scrollLeft + (event.clientX - this.clientMiddle - this.marginLeft) +
+                              timeSpanElement.clientWidth / 2) / currentMinuteWidth, 0);
     }
     setTimeout(() => {
       this.printValues(event);
@@ -59,7 +60,7 @@ export class MousewheelScrollingComponent implements OnInit, AfterViewInit {
 
         this.printValues(event);
       }
-    }, 10);
+    });
   }
 
   printValues(event?: WheelEvent) {
