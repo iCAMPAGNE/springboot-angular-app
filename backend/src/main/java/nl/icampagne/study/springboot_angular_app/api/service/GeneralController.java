@@ -1,5 +1,7 @@
 package nl.icampagne.study.springboot_angular_app.api.service;
 
+import java.util.List;
+
 import io.reactivex.Observable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,8 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class GeneralController {
-    private Version version;
-    private OverviewService overviewService;
+    private final Version version;
+    private final OverviewService overviewService;
 
     @Autowired
     GeneralController(final OverviewService overviewService, final Version version) {
@@ -33,7 +35,7 @@ public class GeneralController {
     }
 
     @GetMapping(value = "/overview", produces = "application/json")
-    public ResponseEntity getOverview() {
+    public ResponseEntity<List<String>> getOverview() {
         return ResponseEntity.ok().body(overviewService.getOverview());
     }
 
@@ -49,5 +51,5 @@ public class GeneralController {
 @AllArgsConstructor
 @Component
 class Version {
-    private String version = "0.0.2";
+    private String version = "0.1.1";
 }

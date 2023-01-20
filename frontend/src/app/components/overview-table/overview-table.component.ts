@@ -7,6 +7,7 @@ import {BackendService} from "../../services/backend.service";
   templateUrl: './overview-table.component.html'
 })
 export class OverviewTableComponent implements OnInit {
+    showRightPanel: boolean = false;
 
   constructor(private backendService: BackendService) { }
 

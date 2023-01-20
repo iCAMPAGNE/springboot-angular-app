@@ -9,6 +9,7 @@ import { OverviewTableComponent } from './components/overview-table/overview-tab
 import {NavigatieMenuComponent} from "./components/navigatie-menu/navigatie-menu.component";
 import {ObstestComponent} from "./components/obstest/obstest.component";
 import { MousewheelScrollingComponent } from './components/mousewheel-scrolling/mousewheel-scrolling.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -19,11 +20,12 @@ import { MousewheelScrollingComponent } from './components/mousewheel-scrolling/
     ObstestComponent,
     MousewheelScrollingComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
