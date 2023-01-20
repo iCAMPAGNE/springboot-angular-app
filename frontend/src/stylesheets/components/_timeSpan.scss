@@ -2,13 +2,14 @@
     margin: 50px;
     display: -webkit-flex;
     display: flex;
-    width: 500px;
+    width: 1000px;
     height: 200px;
     overflow-x: scroll;
 
     .minute {
         height: 100%;
         border-left: solid black 1px;
+        text-align: right;
 
         &:nth-child(even) {
             background-color: dodgerblue;

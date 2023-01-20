@@ -12,12 +12,12 @@ export class MousewheelScrollingComponent implements OnInit, AfterViewInit {
   clientMiddle: number = 0;
 
   marginLeft: number = 0;
-  minutes: number[] = Array.from(Array(100).keys());
-  minuteWidth: number = 25;
+  minutes: number[] = [...[...Array.from(Array(23).keys())].map(i => i+1), ...Array.from(Array(24).keys()), ...Array.from(Array(24).keys()), ...Array.from(Array(2).keys())];
+  minuteWidth: number = 50;
   scrollLeft: number = 0;
   printNr: number = 0;
 
-  ships = [{pos: {x: 80, y:0}, length: 2}, {pos: {x: 79, y:25}, length: 0.5}, {pos: {x: 77, y:0}, length: 1.5}, {pos: {x: 70, y:75}, length: 4}];
+  ships = [{pos: {x: 60, y:0}, length: 2}, {pos: {x: 59, y:25}, length: 0.5}, {pos: {x: 57, y:0}, length: 1.5}, {pos: {x: 50, y:75}, length: 4}];
 
   ngOnInit(): void {
   }
@@ -27,7 +27,7 @@ export class MousewheelScrollingComponent implements OnInit, AfterViewInit {
       const timeSpanElement = this.timeSpan.nativeElement;
       this.clientMiddle = timeSpanElement.clientWidth / 2;
       this.marginLeft = timeSpanElement.offsetLeft;
-      timeSpanElement.scrollLeft = 75 * this.minuteWidth - timeSpanElement.clientWidth / 2;
+      timeSpanElement.scrollLeft = 12 * this.minuteWidth - timeSpanElement.clientWidth / 2;
       this.printValues();
     }
   }
