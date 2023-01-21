@@ -8,25 +8,29 @@ export class MousewheelScrollingComponent implements OnInit, AfterViewChecked, A
 
   @ViewChild('timeSpan') timeSpan: ElementRef<HTMLInputElement> | undefined;
 
-  minutes: number[] = [...[...Array.from(Array(23).keys())].map(i => i+1), ...Array.from(Array(24).keys()), ...Array.from(Array(24).keys()), ...Array.from(Array(2).keys())];
+  minutes: number[] = [];
   minuteWidth: number = 50;
   zoomFactor: number = 5;
   factor: number = 0;
   scrollLeft: number = 0;
-  currentMinuteWidth: number = 0;
+  currentMinuteWidth: number = this.minuteWidth;
   cursorX: number = 0;
   printNr: number = 10;
 
-  ships = [{pos: {x: 60, y:0}, length: 2}, {pos: {x: 59, y:25}, length: 0.5}, {pos: {x: 57, y:0}, length: 1.5}, {pos: {x: 50, y:75}, length: 4}];
+  ships: any = [];
 
   ngOnInit(): void {
-    console.log('ngOnInit, this.timeSpan = ' + this.timeSpan);
+    this.minutes =
+        [...[...Array.from(Array(23).keys())].map(i => i+1), ...Array.from(Array(24).keys()), ...Array.from(Array(24).keys()), ...Array.from(Array(2).keys())]
+    this.ships =
+        [{pos: {x: 60, y:0}, length: 2}, {pos: {x: 59, y:25}, length: 0.5}, {pos: {x: 57, y:0}, length: 1.5}, {pos: {x: 50, y:75}, length: 4}];
   }
 
   ngAfterViewInit(): void {
     if (this.timeSpan && this.timeSpan.nativeElement) {
       const timeSpanElement = this.timeSpan.nativeElement;
       timeSpanElement.scrollTo(36 * this.minuteWidth - timeSpanElement.clientWidth / 2, 0);
+      this.scrollLeft = timeSpanElement.scrollLeft;
       this.printValues();
     }
   }
@@ -56,19 +60,19 @@ export class MousewheelScrollingComponent implements OnInit, AfterViewChecked, A
       // afgetrokken worden van event.clientX, en de breedte van timeSpan opgeteld worden.
       // Omdat zojuist de breedte van de minuut (minuteWidth) is vergroot met factor factor moet het resultaat hierboven vermenigvuldigd worden met factor.
       const scrollTo: number = this.scrollLeft + this.factor * (this.cursorX - timeSpanElement.offsetLeft + this.scrollLeft) / this.currentMinuteWidth;
-      timeSpanElement.scrollTo(scrollTo,0);
+//      timeSpanElement.scrollTo(scrollTo,0);
       console.log('scrollTo='+scrollTo + ', '+(event.clientX - timeSpanElement.offsetLeft + this.scrollLeft)/ this.currentMinuteWidth);
       console.log(this.scrollLeft, this.factor, event.clientX, timeSpanElement.offsetLeft, this.currentMinuteWidth); // 1300 5 1056 58 50
 
-      setTimeout(() => {
-        this.printValues(event);
-        if (this.timeSpan && this.timeSpan.nativeElement) {
-          const timeSpanElement = this.timeSpan.nativeElement;
-          timeSpanElement.scrollTo(scrollTo , 0);
-
-          this.printValues(event, scrollTo);
-        }
-      }, 1000);
+      // setTimeout(() => {
+      //   this.printValues(event);
+      //   if (this.timeSpan && this.timeSpan.nativeElement) {
+      //     const timeSpanElement = this.timeSpan.nativeElement;
+      //     timeSpanElement.scrollTo(scrollTo , 0);
+      //
+      //     this.printValues(event, scrollTo);
+      //   }
+      // }, 1000);
     }
   }
 
@@ -108,11 +112,12 @@ export class MousewheelScrollingComponent implements OnInit, AfterViewChecked, A
     // Deze method wordt 1 msec aangeroepen nadat de view is gewijzigd. Dat is snel genoeg om het verspringen te voorkomen.
     // Een alternatief, het gebruik van setTimeout, duurt ca 7 msec en dat is genoeg om de balk te zien verspringen.
 
-    // if (this.timeSpan && this.timeSpan.nativeElement) {
-    //   const timeSpanElement = this.timeSpan.nativeElement;
-    //   const scrollTo: number = this.scrollLeft + this.factor * (this.cursorX - timeSpanElement.offsetLeft + this.scrollLeft) / this.currentMinuteWidth;
-    //   timeSpanElement.scrollTo(scrollTo, 0);
-    // }
-    // this.printValues();
+    if (this.timeSpan && this.timeSpan.nativeElement) {
+      const timeSpanElement = this.timeSpan.nativeElement;
+      const scrollTo: number = this.scrollLeft + this.factor * (this.cursorX - timeSpanElement.offsetLeft + this.scrollLeft) / this.currentMinuteWidth;
+      timeSpanElement.scrollTo(scrollTo, 0);
+      console.log('ngAfterViewChecked scrollTo + ', scrollTo);
+    }
+    this.printValues();
   }
 }
