@@ -1,87 +1,118 @@
-import {AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
+import {AfterViewChecked, AfterViewInit, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-mousewheel-scrolling',
   templateUrl: './mousewheel-scrolling.component.html'
 })
-export class MousewheelScrollingComponent implements OnInit, AfterViewInit {
+export class MousewheelScrollingComponent implements OnInit, AfterViewChecked, AfterViewInit, OnDestroy {
 
   @ViewChild('timeSpan') timeSpan: ElementRef<HTMLInputElement> | undefined;
 
-  zoomFactor: number = 5;
-  clientMiddle: number = 0;
-
-  marginLeft: number = 0;
   minutes: number[] = [...[...Array.from(Array(23).keys())].map(i => i+1), ...Array.from(Array(24).keys()), ...Array.from(Array(24).keys()), ...Array.from(Array(2).keys())];
   minuteWidth: number = 50;
+  zoomFactor: number = 5;
+  factor: number = 0;
   scrollLeft: number = 0;
-  printNr: number = 0;
+  currentMinuteWidth: number = 0;
+  cursorX: number = 0;
+  printNr: number = 10;
 
   ships = [{pos: {x: 60, y:0}, length: 2}, {pos: {x: 59, y:25}, length: 0.5}, {pos: {x: 57, y:0}, length: 1.5}, {pos: {x: 50, y:75}, length: 4}];
 
   ngOnInit(): void {
+    console.log('ngOnInit, this.timeSpan = ' + this.timeSpan);
   }
 
   ngAfterViewInit(): void {
     if (this.timeSpan && this.timeSpan.nativeElement) {
       const timeSpanElement = this.timeSpan.nativeElement;
-      this.clientMiddle = timeSpanElement.clientWidth / 2;
-      this.marginLeft = timeSpanElement.offsetLeft;
-      timeSpanElement.scrollLeft = 12 * this.minuteWidth - timeSpanElement.clientWidth / 2;
+      timeSpanElement.scrollTo(36 * this.minuteWidth - timeSpanElement.clientWidth / 2, 0);
       this.printValues();
     }
   }
 
   @HostListener("wheel", ["$event"])
   public onScroll(event: WheelEvent) {
-    this.printValues(event);
-    const currentMinuteWidth = this.minuteWidth;
-    let factor = 0;
+    this.cursorX = event.clientX
+    this.currentMinuteWidth = this.minuteWidth;
     if (this.timeSpan && this.timeSpan.nativeElement) {
       const timeSpanElement = this.timeSpan.nativeElement;
       this.scrollLeft = timeSpanElement.scrollLeft;
 
       if (event.deltaY > 0 && this.minuteWidth > this.zoomFactor) {
         this.minuteWidth -= this.zoomFactor;
-        factor = -this.zoomFactor;
+        this.factor = -this.zoomFactor;
       }
       if (event.deltaY < 0) {
         this.minuteWidth += this.zoomFactor;
-        factor = this.zoomFactor;
+        this.factor = this.zoomFactor;
       }
-     timeSpanElement.scrollTo(timeSpanElement.scrollLeft + factor * (timeSpanElement.scrollLeft + (event.clientX - this.clientMiddle - this.marginLeft) +
-                              timeSpanElement.clientWidth / 2) / currentMinuteWidth, 0);
-    }
-    setTimeout(() => {
-      this.printValues(event);
-      if (this.timeSpan && this.timeSpan.nativeElement) {
-        const timeSpanElement = this.timeSpan.nativeElement;
-        timeSpanElement.scrollTo(this.scrollLeft + factor * (this.scrollLeft + (event.clientX - this.clientMiddle - this.marginLeft) + timeSpanElement.clientWidth / 2) / currentMinuteWidth , 0);
 
+      this.printValues(event);
+
+      // Positie van scrollbar moet gewijzigd worden gebaseerd op wijziging van minuteWidth en positie van de (muis) cursor.
+      // De positie (scrollTo) geeft de linker kant aan van het te tonen gedeelte van het minutes-frame. Dit wordt als volgt berekend:
+      // event.clientX is de absolute positie van de muis-cursor. Om de gewenste positie van minutes-frame te bepalen moet de left-margin van timeSpan
+      // afgetrokken worden van event.clientX, en de breedte van timeSpan opgeteld worden.
+      // Omdat zojuist de breedte van de minuut (minuteWidth) is vergroot met factor factor moet het resultaat hierboven vermenigvuldigd worden met factor.
+      const scrollTo: number = this.scrollLeft + this.factor * (this.cursorX - timeSpanElement.offsetLeft + this.scrollLeft) / this.currentMinuteWidth;
+      timeSpanElement.scrollTo(scrollTo,0);
+      console.log('scrollTo='+scrollTo + ', '+(event.clientX - timeSpanElement.offsetLeft + this.scrollLeft)/ this.currentMinuteWidth);
+      console.log(this.scrollLeft, this.factor, event.clientX, timeSpanElement.offsetLeft, this.currentMinuteWidth); // 1300 5 1056 58 50
+
+      setTimeout(() => {
         this.printValues(event);
-      }
-    });
+        if (this.timeSpan && this.timeSpan.nativeElement) {
+          const timeSpanElement = this.timeSpan.nativeElement;
+          timeSpanElement.scrollTo(scrollTo , 0);
+
+          this.printValues(event, scrollTo);
+        }
+      }, 1000);
+    }
   }
 
-  printValues(event?: WheelEvent) {
-    if (this.printNr++ % 5 == 0) {
-      console.log('     client\tclient\tscroll\tscroll\t\tminute');
-      console.log('zoom Left\tWidth\tLeft\tWidth\tmouse\twidth');
+  printValues(event?: WheelEvent, scrollTo?: number) {
+    if (this.printNr++ % 10 == 1) {
+      console.log('                      offset\tclient\tclient\tminute\t\tscroll\tscroll\t');
+      console.log('             nr zoom  left\tLeft\tWidth\twidth\tmouse\tLeft\twidth\tscrollTo');
     }
     if (this.timeSpan && this.timeSpan.nativeElement) {
       const timeSpanElement = this.timeSpan.nativeElement;
-      console.log((event ? event.deltaY < 0 ? 'in    ' : 'out   ' : '      ')
-          + timeSpanElement.clientLeft + ' '
+      console.log(this.toonTijdstip()
+          + this.printNr + ' ' + (event ? event.deltaY < 0 ? ' in   ' : ' out  ' : '      ')
+          + '\t' + timeSpanElement.offsetLeft + ' '
+          + '\t' + timeSpanElement.clientLeft + ' '
           + '\t' + timeSpanElement.clientWidth
+          + '\t' + this.minuteWidth
+          + '\t' + (event ? event.clientX : '')
           + '\t' + timeSpanElement.scrollLeft
           + '\t' + timeSpanElement.scrollWidth
-          + '\t' + (event ? event.clientX : '')
-          + '\t' + this.minuteWidth
-          + '\t' + (75 * this.minuteWidth * 5 - timeSpanElement.clientWidth / 2)
-          + '\t' + (timeSpanElement.scrollLeft + (event ? event.clientX - 258: 0) + timeSpanElement.clientWidth / 2) / (this.minuteWidth * 5)
+          + '\t' + (scrollTo ? scrollTo : '')
           + '\t'
       );
     }
   }
 
+  toonTijdstip() {
+    const now = new Date();
+    const msec = now.getUTCMilliseconds()
+    return now.toTimeString().substring(0,8) + '.' + (msec < 10 ? '00' : msec < 100 ? '0' : '') + msec + ' ';
+  }
+
+  ngOnDestroy(): void {
+    console.log('ngOnDestroy');
+  }
+
+  ngAfterViewChecked(): void {
+    // Deze method wordt 1 msec aangeroepen nadat de view is gewijzigd. Dat is snel genoeg om het verspringen te voorkomen.
+    // Een alternatief, het gebruik van setTimeout, duurt ca 7 msec en dat is genoeg om de balk te zien verspringen.
+
+    // if (this.timeSpan && this.timeSpan.nativeElement) {
+    //   const timeSpanElement = this.timeSpan.nativeElement;
+    //   const scrollTo: number = this.scrollLeft + this.factor * (this.cursorX - timeSpanElement.offsetLeft + this.scrollLeft) / this.currentMinuteWidth;
+    //   timeSpanElement.scrollTo(scrollTo, 0);
+    // }
+    // this.printValues();
+  }
 }
