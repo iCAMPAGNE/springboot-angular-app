@@ -16,7 +16,6 @@ start-me.sh
 ### IntelliJ IDEA ###
 /.idea
 *.iws
-*.iml
-*.ipr
 **/*.iml
+*.ipr
 

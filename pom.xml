@@ -7,14 +7,14 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.0</version>
+        <version>3.1.2</version>
         <relativePath/>
     </parent>
 
     <groupId>nl.icampagne.study</groupId>
     <artifactId>springboot-angular-app</artifactId>
     <packaging>pom</packaging>
-    <version>0.1.1</version>
+    <version>0.2.0</version>
 
     <modules>
         <module>frontend</module>

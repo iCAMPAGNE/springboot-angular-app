@@ -51,5 +51,5 @@ public class GeneralController {
 @AllArgsConstructor
 @Component
 class Version {
-    private String version = "0.1.1";
+    private String version = "0.2.0";
 }
