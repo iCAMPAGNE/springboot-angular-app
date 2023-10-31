@@ -25,7 +25,7 @@ export class BackendService {
         return this.httpClient.get(this.rootContex + 'overview');
     }
 
-    getComments():Observable<any> {
-        return this.httpClient.get(this.rootContex + 'comments');
-    }
+    // getComments():Observable<Version> {
+    //     return this.httpClient.get<Version>(this.rootContex + 'comments');
+    // }
 }

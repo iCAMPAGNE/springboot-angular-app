@@ -4,11 +4,10 @@ node_modules
 .project
 .settings
 .classpath
+.angular
 node/
 node_modules/
 lib/
-FilmGezien.iml
-backend/backend.iml
 daily-email-content.html
 start-me.sh
 
@@ -18,4 +17,3 @@ start-me.sh
 *.iws
 **/*.iml
 *.ipr
-

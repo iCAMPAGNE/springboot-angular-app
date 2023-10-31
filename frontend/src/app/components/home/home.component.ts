@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {BackendService} from "../../services/backend.service";
-
-interface AppVersion {
-    version: string;
-}
+import {Version} from "../../models/api.model";
 
 @Component({
   selector: 'app-home',
@@ -11,21 +8,21 @@ interface AppVersion {
 })
 export class HomeComponent implements OnInit {
 
-  version: string = "Loading version";
+  version: Version | undefined ;
 
   constructor(private backendService: BackendService) { }
 
   ngOnInit(): void {
-     this.backendService.getVersion().subscribe((reply: AppVersion) => {
-          this.version = reply.version;
-      });
+     // this.backendService.getVersion().subscribe((reply: Version) => {
+     //      this.version = reply;
+     //  });
 
        this.backendService.getVersion().subscribe({
-          next: (result:AppVersion) => {
+          next: (result:Version) => {
               console.log('next: result = ', result);
-              this.version = result.version;
+              this.version = result;
           },
-          error: (err: any) => this.version = 'Retrieving version from backend failed.'
+          error: (err: any) => console.log('Retrieving version from backend failed.')
       });
 
       this.backendService.getOverviewObserver().subscribe({

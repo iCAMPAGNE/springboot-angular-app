@@ -1,36 +1,40 @@
 package nl.icampagne.study.springboot_angular_app.api.service;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 import io.reactivex.Observable;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import nl.icampagne.study.springboot_angular_app.api.model.Version;
 import nl.icampagne.study.springboot_angular_app.services.OverviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
 @RequestMapping("/api")
 public class GeneralController {
-    private final Version version;
     private final OverviewService overviewService;
+    private final Properties projectProperties = new Properties();
+    private final Properties buildProperties = new Properties();
 
     @Autowired
-    GeneralController(final OverviewService overviewService, final Version version) {
+    GeneralController(final OverviewService overviewService) {
         this.overviewService = overviewService;
-        this.version = version;
+        try {
+            projectProperties.load(getClass().getClassLoader().getResourceAsStream("project.properties"));
+            buildProperties.load(getClass().getClassLoader().getResourceAsStream("META-INF/build-info.properties"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    @RequestMapping(value="/version", method = RequestMethod.GET)
+    @GetMapping(value = "/version", produces = "application/json")
     public ResponseEntity<Version> getVersion() {
+        final Version version = new Version(projectProperties.getProperty("version"), buildProperties.getProperty("build.time"));
         return ResponseEntity.ok().body(version);
     }
 
@@ -43,13 +47,4 @@ public class GeneralController {
     public Observable<String> getComment() {
         return Observable.just("Een", "Twee");
     }
-}
-
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Component
-class Version {
-    private String version = "0.2.0";
 }

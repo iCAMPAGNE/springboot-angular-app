@@ -13,16 +13,16 @@ export class OverviewTableComponent implements OnInit {
 
   ngOnInit(): void {
 
-      this.backendService.getComments().subscribe({
-          next(item: string) {
-              console.log('Current item: ', item);
-          },
-          complete() {
-              console.log('Completed');
-          },
-          error(msg: Error) {
-              console.log('Error Getting items: ', msg);
-          }});
+      // this.backendService.getComments().subscribe({
+      //     next(item: string) {
+      //         console.log('Current item: ', item);
+      //     },
+      //     complete() {
+      //         console.log('Completed');
+      //     },
+      //     error(msg: Error) {
+      //         console.log('Error Getting items: ', msg);
+      //     }});
 
       const itemsObservable = new Observable((observer: Observer<string>) => {
           for (let itemNr: number = 1; itemNr <= 10; itemNr++) {

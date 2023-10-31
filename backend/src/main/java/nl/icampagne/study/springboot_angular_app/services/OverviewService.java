@@ -12,6 +12,6 @@ public class OverviewService {
     private static Logger LOGGER;
 
     public List<String> getOverview() {
-        return Arrays.asList(new String[] { "First", "Second", "Third", "Fourth" });
+        return Arrays.asList("First", "Second", "Third", "Fourth");
     }
 }
