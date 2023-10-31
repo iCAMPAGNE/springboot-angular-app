@@ -1,0 +1,42 @@
+<navigatie-menu></navigatie-menu>
+<div class="main-area">
+  <div>
+    <button class="show-processes" *ngrxLet="stepsObservable$; let done = complete" (click)="showProcessSteps()"
+            [disabled]="stepsObservable$ && !done || loadingProcessSteps">
+      {{loadingProcessSteps ? '' : 'Toon proces stappen'}}
+      <i *ngIf="loadingProcessSteps" class="data-loading"></i>
+    </button>
+
+    <div *ngrxLet="stepsObservable$; let currentStep; let error = error; let done = complete" class="steps-area" [ngClass]="{'mandatory': currentStep?.mandatory}">
+      <div *ngIf="currentStep">
+        <div style="font-weight: bold">Stap {{currentStep.order}}</div>
+        <div [innerHTML]="currentStep.description"></div>
+      </div>
+      <div class="error" *ngIf="error">Er is een foutmelding opgetreden: {{error}}</div>
+      <div class="complete" *ngIf="done">Alle stappen zijn uitgevoerd.</div>
+    </div>
+  </div>
+
+  <form name="form" #form="ngForm">
+    <label>Beschijf hieronder de nieuwe proces stap</label>
+    <textarea name="description" rows="5" cols="10" [(ngModel)]="editProcessStep.description" required minlength="4" maxlength="1000"></textarea>
+    <div>
+      <label>Waar moet de nieuwe stap komen?</label>
+      <select name="order" [(ngModel)]="editProcessStep.order" (click)="selectStepNr()" required>
+        <option value="0">Bovenaan</option>
+        <option *ngFor="let nr of selectStepOptions" value="{{nr}}">Na stap {{nr}}</option>
+        <option value="{{selectStepOptions.length + 1}}">Onderaan</option>
+      </select>
+    </div>
+    <div>
+      <label>Verplichte stap</label>
+      <input name="mandatory" type="checkbox" [(ngModel)]="editProcessStep.mandatory">
+    </div>
+
+    <button class="edit-proces" (click)="addProcessStep()" [disabled]="form.invalid">
+      {{submittingNewStep ? '' : 'Voeg proces stap toe'}}
+      <i *ngIf="submittingNewStep" class="data-loading"></i>
+    </button>
+    <p [innerHTML]="message"></p>
+  </form>
+</div>
