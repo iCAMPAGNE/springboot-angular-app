@@ -7,3 +7,5 @@
         <a href="mousewheelScrolling"><button [ngClass]="{'currentPage':currentPage == 'mousewheelScrolling'}">Mousewheel scrolling</button></a>
     </div>
 </div>
+
+<div *ngIf="version" class="version">Versienummer: {{version.number}} / {{version.dateTime}}</div>

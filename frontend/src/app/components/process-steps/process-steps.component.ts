@@ -25,8 +25,7 @@ export class ProcessStepsComponent {
 
   showProcessSteps() {
     this.loadingProcessSteps = true;
-    this.backendService.getProcessSteps().subscribe({
-      next: (processSteps: ProcessStep[]) => {
+    this.backendService.getProcessSteps().subscribe((processSteps: ProcessStep[]) => {
         this.stepsObservable$ = new Observable((observer: Observer<ProcessStep>) => {
           processSteps.forEach((processStep:ProcessStep, index) => {
             setTimeout(() => {
@@ -45,19 +44,25 @@ export class ProcessStepsComponent {
             console.log('Current item: ', item);
           },
           complete() {
-            console.log('Completed');
+            console.log('stepsObservable$ completed');
           },
           error(msg: Error) {
             console.log('Error Getting items: ', msg);
-          }});
-
+          }
+        });
         setTimeout(() => {
           this.stepDescription$?.unsubscribe();
         }, 15000);
       },
-      error: (err: any) => console.log('Retrieving processSteps from backend failed.'),
-      complete: () => this.loadingProcessSteps = false
-    })
+      (error: any) => {
+        console.log('Retrieving processSteps from backend failed.');
+        this.loadingProcessSteps = false;
+      },
+      () => {
+        console.log('stepsObservable$ completed');
+        this.loadingProcessSteps = false;
+      }
+      )
   }
 
   addProcessStep() {
@@ -74,6 +79,7 @@ export class ProcessStepsComponent {
       },
       error: (error) => {
         this.message = 'Het toevoegen van een proces stap is mislukt.<br>De foutmelding is:<br> ' + error.message;
+        this.submittingNewStep = false;
       },
       complete: () => {
         this.submittingNewStep = false;

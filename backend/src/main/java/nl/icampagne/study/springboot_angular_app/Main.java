@@ -7,12 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class SpringbootAngularAppMain extends SpringBootServletInitializer {
+public class Main extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         System.setProperty("server.servlet.context-path", "/springboot-angular-app");
 
-        SpringApplication.run(SpringbootAngularAppMain.class, args);
+        SpringApplication.run(Main.class, args);
         try {
             openHomePage();
         } catch (IOException e) {

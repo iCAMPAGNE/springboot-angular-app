@@ -1,9 +1,9 @@
 {
   "name": "springboot-angular-app",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json -o",
+    "start": "ng serve --proxy-config proxy.conf.json --port 4212 -o",
     "build": "ng build",
     "build-p": "ng build --configuration production --base-href /springboot-angular-app/",
     "test": "ng test --browsers ChromeHeadless --watch=false --karma-config=karma.conf.js",
