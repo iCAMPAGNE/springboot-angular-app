@@ -10,6 +10,8 @@ import {NavigatieMenuComponent} from "./components/navigatie-menu/navigatie-menu
 import {ObstestComponent} from "./components/obstest/obstest.component";
 import { MousewheelScrollingComponent } from './components/mousewheel-scrolling/mousewheel-scrolling.component';
 import {FormsModule} from "@angular/forms";
+import { ProcessStepsComponent } from './components/process-steps/process-steps.component';
+import {LetModule} from "@ngrx/component";
 
 @NgModule({
   declarations: [
@@ -18,14 +20,16 @@ import {FormsModule} from "@angular/forms";
     HomeComponent,
     OverviewTableComponent,
     ObstestComponent,
-    MousewheelScrollingComponent
+    MousewheelScrollingComponent,
+    ProcessStepsComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    LetModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

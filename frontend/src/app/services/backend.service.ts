@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {ProcessStep} from "../models/api.model";
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,15 @@ export class BackendService {
         return this.httpClient.get(this.rootContex + 'overview');
     }
 
-    // getComments():Observable<Version> {
-    //     return this.httpClient.get<Version>(this.rootContex + 'comments');
-    // }
+    getProcessSteps(): Observable<any> {
+        return this.httpClient.get(this.rootContex + 'process-steps');
+    }
+
+    getNumberOfProcessSteps(): Observable<number> {
+        return this.httpClient.get<number>(this.rootContex + 'process-steps-count');
+    }
+
+    storeProcessStep(processStep: ProcessStep): Observable<any> {
+        return this.httpClient.post<ProcessStep>(this.rootContex + 'process-step', processStep, this.httpOptions);
+    }
 }

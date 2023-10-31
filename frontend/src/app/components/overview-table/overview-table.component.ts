@@ -1,29 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable, Observer, of} from "rxjs";
-import {BackendService} from "../../services/backend.service";
 
 @Component({
   selector: 'app-overview-table',
   templateUrl: './overview-table.component.html'
 })
 export class OverviewTableComponent implements OnInit {
-    showRightPanel: boolean = false;
+  showRightPanel: boolean = false;
 
-  constructor(private backendService: BackendService) { }
+  constructor() { }
 
   ngOnInit(): void {
-
-      // this.backendService.getComments().subscribe({
-      //     next(item: string) {
-      //         console.log('Current item: ', item);
-      //     },
-      //     complete() {
-      //         console.log('Completed');
-      //     },
-      //     error(msg: Error) {
-      //         console.log('Error Getting items: ', msg);
-      //     }});
-
       const itemsObservable = new Observable((observer: Observer<string>) => {
           for (let itemNr: number = 1; itemNr <= 10; itemNr++) {
               setTimeout(() => {

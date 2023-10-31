@@ -2,40 +2,35 @@
   height: 4em;
 }
 
-.menu {
-  margin-top: -1em;
-  margin-left: -1em;
-  padding-top: 2em;
-  font-size: 16px;
-  background-color: white;
-  height: 4em;
-  > li {
-    display: inline;
-  }
-}
-
-.flex-container {
+.menu-bar {
   position: fixed;
-  display: -webkit-flex;
+  width: 101%;
+  left: 0;
+  top: 0;
+  background-color: indigo;
   display: flex;
-  width: 100%;
+  align-items: center;
   a {
-    width: 15em;
-    display: inline-block;
-    padding: 0.8em;
-    border: solid black 1px;
-    text-align: center;
-    font-weight: bold;
-    color: black;
-    background-color: thistle;
     text-decoration: none;
-    &:hover {
-      background-color: wheat;
-    }
-    &.currentPage {
-      font-weight: bold;
-      background-color: sienna;
-      color: white;
+
+    button {
+      margin: 1em;
+      padding: 1em;
+      border-radius: 0.5em;
+      border: none;
+      width: 15em;
+      background-color: orange;
+      cursor: pointer;
+      font-size: 14px;
+
+      &:hover {
+        background-color: yellow;
+      }
+
+      &.currentPage {
+        font-weight: bold;
+        background-color: #AAFFAA;
+      }
     }
   }
 }

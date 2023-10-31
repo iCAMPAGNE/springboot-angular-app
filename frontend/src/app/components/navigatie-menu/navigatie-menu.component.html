@@ -1,8 +1,9 @@
 <div class="menu-header">
-    <ul class="menu flex-container">
-        <li><a href="home" [ngClass]="{'currentPage':currentPage == 'home'}">Home</a></li>
-        <li><a href="overview" [ngClass]="{'currentPage':currentPage == 'overview'}">Overview</a></li>
-        <li><a href="observableTest" [ngClass]="{'currentPage':currentPage == 'observableTest'}">Observable test</a></li>
-        <li><a href="mousewheelScrolling" [ngClass]="{'currentPage':currentPage == 'mousewheelScrolling'}">Mousewheel scrolling</a></li>
-    </ul>
+    <div class="menu-bar">
+        <a href="home" ><button [ngClass]="{'currentPage':currentPage == 'home' || currentPage == ''}">Home</button></a>
+        <a href="overview"><button [ngClass]="{'currentPage':currentPage == 'overview'}">Overview</button></a>
+        <a href="observableTest"><button [ngClass]="{'currentPage':currentPage == 'observableTest'}">Observable Test</button></a>
+        <a href="processSteps"><button [ngClass]="{'currentPage':currentPage == 'processSteps'}">Process steps</button></a>
+        <a href="mousewheelScrolling"><button [ngClass]="{'currentPage':currentPage == 'mousewheelScrolling'}">Mousewheel scrolling</button></a>
+    </div>
 </div>

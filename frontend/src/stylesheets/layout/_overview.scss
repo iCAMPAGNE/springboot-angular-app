@@ -1,0 +1,76 @@
+body {
+    margin: 1em;
+    font-family: Calibri, sans-serif;
+}
+
+.main-area {
+    display: inline-flex;
+    padding: 1em;
+}
+
+input[type=text], select, textarea {
+    &.ng-invalid{
+        border: solid red 1px;
+    }
+}
+
+button {
+    margin: 1em 0;
+    width: 20em;
+    height: 4em;
+    border-radius: 0.5em;
+    cursor: pointer;
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+}
+
+textarea {
+    border-radius: 0.5em;
+    border: blue 1px solid;
+    background-color: aliceblue;
+    resize: none;
+    padding: 0.5em;
+}
+
+select {
+    margin: 1em;
+    background-color: aliceblue;
+    border-radius: 0.5em;
+    border: blue 1px solid;
+}
+
+form {
+    display:flex;
+    flex-direction: column;
+    margin-left: 5em;
+}
+
+.data-loading {
+    display: inline-block;
+    width: 10rem;
+    height: 3rem;
+    margin-left: 45%;
+}
+
+.data-loading:after {
+    content: " ";
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin: 4px;
+    border-radius: 50%;
+    border-bottom-style: solid;
+    border-bottom-width: 12px;
+    border-color: #aaf transparent #aaa transparent;
+    animation: data-loading 1.2s linear infinite;
+}
+@keyframes data-loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
