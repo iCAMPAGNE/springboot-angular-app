@@ -22,10 +22,6 @@ export class BackendService {
         return this.httpClient.get(this.rootContex + 'version');
     }
 
-    getOverviewObserver():Observable<any> {
-        return this.httpClient.get(this.rootContex + 'overview');
-    }
-
     getProcessSteps(): Observable<any> {
         return this.httpClient.get(this.rootContex + 'process-steps');
     }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {BackendService} from "../../services/backend.service";
+import {FirstService} from "../../services/first.service";
 
 @Component({
   selector: 'app-home',
@@ -7,21 +7,11 @@ import {BackendService} from "../../services/backend.service";
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private backendService: BackendService) {
+  constructor(private firstService: FirstService) {
   }
 
   ngOnInit(): void {
-    this.backendService.getOverviewObserver().subscribe({
-      next(item: string) {
-        console.log('Current item: ', item);
-      },
-      complete() {
-        console.log('Completed');
-      },
-      error(msg: Error) {
-        console.log('Error Getting items: ', msg);
-      }
-    });
+    this.firstService.functionInAbstractService();
   }
 
 }

@@ -12,3 +12,40 @@
 *ngFor
 <div class="thing" *ngFor="let thing of things$ | async">{{thing}}</div>
 
+
+<div class="tables-twin">
+  <div class="twin-table">
+    <div>Table of twins</div>
+    <p>Names</p>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Sex</th>
+      </tr>
+      <tr>
+        <td>Bob</td>
+        <td>Male</td>
+      </tr>
+      <tr>
+        <td>Alice</td>
+        <td>Female</td>
+      </tr>
+    </table>
+    <p>
+      <input type="checkbox" [(ngModel)]="showRightPanel">Show right panel
+    </p>
+  </div>
+  <div *ngIf="showRightPanel" class="twin-table">
+    <p>Travellers</p>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Sex</th>
+      </tr>
+      <tr>
+        <td>Bob</td>
+        <td>Male</td>
+      </tr>
+    </table>
+  </div>
+</div>
