@@ -12,6 +12,7 @@ import { MousewheelScrollingComponent } from './components/mousewheel-scrolling/
 import {FormsModule} from "@angular/forms";
 import { ProcessStepsComponent } from './components/process-steps/process-steps.component';
 import {LetModule} from "@ngrx/component";
+import { ThreeDComponent } from './components/three-d/three-d.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {LetModule} from "@ngrx/component";
     OverviewTableComponent,
     ObstestComponent,
     MousewheelScrollingComponent,
-    ProcessStepsComponent
+    ProcessStepsComponent,
+    ThreeDComponent
   ],
   imports: [
     BrowserModule,
