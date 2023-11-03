@@ -46,31 +46,3 @@ form {
     flex-direction: column;
     margin-left: 5em;
 }
-
-.data-loading {
-    display: inline-block;
-    width: 10rem;
-    height: 3rem;
-    margin-left: 45%;
-}
-
-.data-loading:after {
-    content: " ";
-    display: block;
-    width: 32px;
-    height: 32px;
-    margin: 4px;
-    border-radius: 50%;
-    border-bottom-style: solid;
-    border-bottom-width: 12px;
-    border-color: #aaf transparent #aaa transparent;
-    animation: data-loading 1.2s linear infinite;
-}
-@keyframes data-loading {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}

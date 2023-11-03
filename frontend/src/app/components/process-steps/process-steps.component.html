@@ -4,7 +4,7 @@
     <button class="show-processes" *ngrxLet="stepsObservable$; let done = complete" (click)="showProcessSteps()"
             [disabled]="stepsObservable$ && !done || loadingProcessSteps">
       {{loadingProcessSteps ? '' : 'Toon proces stappen'}}
-      <i *ngIf="loadingProcessSteps" class="data-loading"></i>
+      <i *ngIf="loadingProcessSteps" class="spinner"></i>
     </button>
 
     <div *ngrxLet="stepsObservable$; let currentStep; let error = error; let done = complete" class="steps-area" [ngClass]="{'mandatory': currentStep?.mandatory}">
@@ -35,7 +35,7 @@
 
     <button class="edit-proces" (click)="addProcessStep()" [disabled]="form.invalid">
       {{submittingNewStep ? '' : 'Voeg proces stap toe'}}
-      <i *ngIf="submittingNewStep" class="data-loading"></i>
+      <i *ngIf="submittingNewStep" class="spinner"></i>
     </button>
     <p [innerHTML]="message"></p>
   </form>
