@@ -18,11 +18,11 @@ public class ProcessStepsService {
   ProcessStepsService() {
     processStepList.addAll(
         List.of(
-            new ProcessStep(1L, LocalDateTime.now(), "Eerste stap", false),
-            new ProcessStep(2L, LocalDateTime.now(), "Tweede stap", false),
-            new ProcessStep(3L, LocalDateTime.now(), "Derde stap, deze stap is verplicht", true),
-            new ProcessStep(4L, LocalDateTime.now(), "Vierde stap", false),
-            new ProcessStep(5L, LocalDateTime.now(), "Vijfde stap, deze stap is verplicht", true),
+//            new ProcessStep(1L, LocalDateTime.now(), "Eerste stap", false),
+//            new ProcessStep(2L, LocalDateTime.now(), "Tweede stap", false),
+//            new ProcessStep(3L, LocalDateTime.now(), "Derde stap, deze stap is verplicht", true),
+//            new ProcessStep(4L, LocalDateTime.now(), "Vierde stap", false),
+//            new ProcessStep(5L, LocalDateTime.now(), "Vijfde stap, deze stap is verplicht", true),
             new ProcessStep(6L, LocalDateTime.now(), "Zesde stap, deze stap is verplicht", true)
         )
     );

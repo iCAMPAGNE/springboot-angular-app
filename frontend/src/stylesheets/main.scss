@@ -4,6 +4,9 @@
 // 2. Base
 
 // 3. Layout gerelateerd
+@import
+'layout/overview',
+'layout/tables';
 
 // 4. Components
 @import
@@ -13,9 +16,6 @@
 'components/timeSpan';
 
 // 5. Page-specific styles
-@import
-'layout/overview',
-'layout/tables';
 
 // 6. Vendors
 

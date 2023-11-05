@@ -25,3 +25,31 @@ i.spinner {
          }
      }
  }
+
+.disabled-spinner {
+    &:disabled {
+        position: relative;
+
+        &::after {
+            position: absolute;
+            content: ' ';
+            left: 40%;
+            top: 6%;
+            height: 70%;
+            aspect-ratio: 1;
+            border-width: 3px;
+            border-style: solid;
+            border-color: transparent black transparent black;
+            border-radius: 50%;
+            animation: spinner 1.2s linear infinite;
+            @keyframes spinner {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+        }
+    }
+}

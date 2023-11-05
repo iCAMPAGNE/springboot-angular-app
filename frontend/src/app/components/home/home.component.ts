@@ -3,9 +3,11 @@ import {FirstService} from "../../services/first.service";
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  demoButtonDisabled: boolean = false;
 
   constructor(private firstService: FirstService) {
   }
@@ -14,4 +16,10 @@ export class HomeComponent implements OnInit {
     this.firstService.functionInAbstractService();
   }
 
+  demoButtonSubmit() {
+    this.demoButtonDisabled = true;
+    setTimeout(() => {
+      this.demoButtonDisabled = false;
+    }, 5000);
+  }
 }
