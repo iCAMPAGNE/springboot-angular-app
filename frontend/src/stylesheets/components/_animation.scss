@@ -1,54 +1,29 @@
-button {
-    &.spinner {
-        position: relative;
-    }
+form.ng-invalid button.disabled-spinner, button.disabled-spinner.not-allowed {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.6;
 }
 
-i.spinner {
-     position: absolute;
-     top: 5%;
-     left: 42%;
-     display: inline-block;
-     height: 70%;
-     aspect-ratio: 1;
-     border-color: black transparent black transparent;
-     border-width: 5px;
-     border-style: solid;
-     border-radius: 50%;
-     animation: spinner 1.2s linear infinite;
-     @keyframes spinner {
-         0% {
-             transform: rotate(0deg);
-         }
-         100% {
-             transform: rotate(360deg);
-         }
-     }
- }
-
-.disabled-spinner {
-    &:disabled {
-        position: relative;
-
-        &::after {
-            position: absolute;
-            content: ' ';
-            left: 40%;
-            top: 6%;
-            height: 70%;
-            aspect-ratio: 1;
-            border-width: 3px;
-            border-style: solid;
-            border-color: transparent black transparent black;
-            border-radius: 50%;
-            animation: spinner 1.2s linear infinite;
-            @keyframes spinner {
-                0% {
-                    transform: rotate(0deg);
-                }
-                100% {
-                    transform: rotate(360deg);
-                }
+button.disabled-spinner:disabled {
+    position: relative;
+    &::after {
+        position: absolute;
+        content: ' ';
+        left: 40%;
+        top: 6%;
+        height: 70%;
+        aspect-ratio: 1;
+        border-width: 3px;
+        border-style: solid;
+        border-color: transparent black transparent black;
+        border-radius: 50%;
+        animation: spinner 1.2s linear infinite;
+        @keyframes spinner {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
             }
         }
     }

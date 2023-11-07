@@ -8,13 +8,17 @@ body {
     padding: 1em;
 }
 
+div.items-in-row {
+    display: inline-flex;
+}
+
 input[type=text], select, textarea {
     &.ng-invalid{
         border: solid red 1px;
     }
 }
 
-button {
+button, input[type=submit] {
     margin: 1em 0;
     width: 20em;
     height: 4em;

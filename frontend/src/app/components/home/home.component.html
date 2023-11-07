@@ -1,8 +1,14 @@
 <navigatie-menu></navigatie-menu>
 
-<div>
-  <i>Demo css-class using after that shows spinner when button is disabled.</i>
-  <button class="disabled-spinner" [disabled]="demoButtonDisabled" (click)="demoButtonSubmit()">
-    Click here to show spinner when disabled
-  </button>
-</div>
+<form>
+  <div class="items-in-row"><i>Demo css-class using </i>&nbsp;:after&nbsp;<i> that shows spinner when button is disabled.</i></div>
+  <span><input type="checkbox" required [(ngModel)]="checkBoxValid">Select checkbox to make the form valid.</span>
+  <div class="items-in-row">
+    <button type="submit" class="disabled-spinner" [disabled]="demoButton1Disabled" [ngClass]="{'not-allowed': processing}" (click)="demoButton1Submit()">
+      Click here to show spinner when disabled
+    </button>
+    <button type="submit" class="disabled-spinner" [disabled]="demoButton2Disabled" [ngClass]="{'not-allowed': processing}" (click)="demoButton2Submit()">
+      This other button will be disabled
+    </button>
+  </div>
+</form>

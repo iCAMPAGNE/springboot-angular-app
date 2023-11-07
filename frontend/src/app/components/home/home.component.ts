@@ -7,7 +7,10 @@ import {FirstService} from "../../services/first.service";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  demoButtonDisabled: boolean = false;
+  demoButton1Disabled: boolean = false;
+  demoButton2Disabled: boolean = false;
+  processing: boolean = false;
+  checkBoxValid: boolean = false;
 
   constructor(private firstService: FirstService) {
   }
@@ -16,10 +19,21 @@ export class HomeComponent implements OnInit {
     this.firstService.functionInAbstractService();
   }
 
-  demoButtonSubmit() {
-    this.demoButtonDisabled = true;
+  demoButton1Submit() {
+    this.demoButton1Disabled = true;
+    this.processing = true;
     setTimeout(() => {
-      this.demoButtonDisabled = false;
+      this.processing = false;
+      this.demoButton1Disabled = false;
+    }, 5000);
+  }
+
+  demoButton2Submit() {
+    this.demoButton2Disabled = true;
+    this.processing = true;
+    setTimeout(() => {
+      this.processing = false;
+      this.demoButton2Disabled = false;
     }, 5000);
   }
 }

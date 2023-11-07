@@ -1,9 +1,8 @@
 <navigatie-menu></navigatie-menu>
 <div class="main-area">
   <div>
-    <button class="show-processes spinner" *ngrxLet="stepsObservable$; let done = complete" (click)="showProcessSteps()"
-            [disabled]="stepsObservable$ && !done || loadingProcessSteps">
-      <i *ngIf="loadingProcessSteps" class="spinner"></i>
+    <button class="show-processes disabled-spinner" *ngrxLet="stepsObservable$; let done = complete" (click)="showProcessSteps()"
+            [disabled]="loadingProcessSteps" [ngClass]="{'not-allowed': !done && stepsObservable$}">
       {{loadingProcessSteps ? 'Processing' : 'Toon proces stappen'}}
     </button>
 
@@ -33,8 +32,7 @@
       <input name="mandatory" type="checkbox" [(ngModel)]="editProcessStep.mandatory">
     </div>
 
-    <button class="edit-proces spinner" (click)="addProcessStep()" [disabled]="form.invalid || submittingNewStep">
-      <i *ngIf="submittingNewStep" class="spinner"></i>
+    <button class="edit-proces disabled-spinner" (click)="addProcessStep()" [disabled]="submittingNewStep">
       Voeg proces stap toe
     </button>
     <p [innerHTML]="message"></p>

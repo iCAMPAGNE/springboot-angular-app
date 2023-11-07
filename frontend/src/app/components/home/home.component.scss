@@ -1,4 +1,4 @@
-div {
+form {
     margin: 1em;
     padding: 1em;
     width: fit-content;
@@ -7,9 +7,10 @@ div {
 }
 
 
-button {
+button, input[type=submit] {
     display: block;
     color: white;
     background-color: lightseagreen;
     border-color: seagreen;
+    margin-right: 2em;
 }
