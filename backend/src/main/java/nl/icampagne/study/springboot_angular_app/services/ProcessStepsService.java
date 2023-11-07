@@ -30,7 +30,7 @@ public class ProcessStepsService {
 
   public List<ProcessStep> retrieveProcessSteps() {
     try {
-      Thread.sleep(3000);
+      Thread.sleep(2000);
     } catch (InterruptedException e) {
       throw new RuntimeException(e);
     }
@@ -50,6 +50,11 @@ public class ProcessStepsService {
   }
 
   public Integer numberOfSteps() {
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException e) {
+      throw new RuntimeException(e);
+    }
     return processStepList.size();
   }
 }

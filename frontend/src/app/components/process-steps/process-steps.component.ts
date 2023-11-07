@@ -11,8 +11,9 @@ import {ProcessStep} from "../../models/api.model";
 export class ProcessStepsComponent {
   stepDescription$: Subscription | undefined;
   stepsObservable$: Observable<any> | undefined;
-  selectStepOptions: number[] = [];
+  selectStepOptions: any[] = [{value:-1,text:'Loading...'}];
   editProcessStep: ProcessStep = {description:'', mandatory: false}
+  loadingNumberOfStep: boolean = false;
   submittingNewStep: boolean = false;
   loadingProcessSteps: boolean = false;
   message: string = '';
@@ -87,14 +88,21 @@ export class ProcessStepsComponent {
     })
   }
 
-  selectStepNr() {
-    this.message = '';
-    this.backendService.getNumberOfProcessSteps().subscribe((count:number) => {
-      this.selectStepOptions = new Array(count - 1);
-      for (let index = 0; index < this.selectStepOptions.length; index++) {
-        this.selectStepOptions[index] = index + 1;
-      }
-    })
+  selectStepNr(event:Event) {
+    if (event.eventPhase === 2) {
+      this.loadingNumberOfStep = true;
+      this.selectStepOptions =[];
+      this.message = '';
+      this.backendService.getNumberOfProcessSteps().subscribe((count:number) => {
+        this.selectStepOptions = new Array(count + 1);
+        this.selectStepOptions[0] = {value:0,text:'bovenaan'};
+        for (let index = 1; index < count; index++) {
+          this.selectStepOptions[index] = {value:index,text:'Na stap ' + index};
+        }
+        this.selectStepOptions[count] = {value:count,text:'onderaan'};
+        this.loadingNumberOfStep = false;
+      })
+    }
   }
 
 }

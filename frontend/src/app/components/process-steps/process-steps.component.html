@@ -21,10 +21,11 @@
     <textarea name="description" rows="5" cols="10" [(ngModel)]="editProcessStep.description" required minlength="4" maxlength="1000"></textarea>
     <div>
       <label>Waar moet de nieuwe stap komen?</label>
-      <select name="order" [(ngModel)]="editProcessStep.order" (click)="selectStepNr()" required>
-        <option value="0">Bovenaan</option>
-        <option *ngFor="let nr of selectStepOptions" value="{{nr}}">Na stap {{nr}}</option>
-        <option value="{{selectStepOptions.length + 1}}">Onderaan</option>
+      <button class="disabled-spinner" style="position: relative; background-color: transparent; border: none; width: 0; height: 2em; top:-0.4em; left: 3em;"
+               [disabled]="loadingNumberOfStep"></button>
+      <select name="order" [(ngModel)]="editProcessStep.order" (click)="selectStepNr($event)" required [disabled]="loadingNumberOfStep">
+        <option *ngIf="loadingNumberOfStep" disabled>Loading...</option>
+        <option *ngFor="let nr of selectStepOptions" [value]="nr.value">{{nr.text}}</option>
       </select>
     </div>
     <div>
