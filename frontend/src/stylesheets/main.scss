@@ -1,22 +1,26 @@
 
-// 1. Configuratie en helpers
-
-// 2. Base
-
-// 3. Layout gerelateerd
+// 1. Base
 @import
-'layout/overview',
-'layout/tables';
+'base/generic';
 
-// 4. Components
+// 2. Components
 @import
-'components/generic',
-'components/menu',
-'components/animation',
-'components/timeSpan';
+'components/button',
+'components/input';
 
-// 5. Page-specific styles
+// 3. Layout
+@import
+'layout/header',
+'layout/footer',
+'layout/form',
+'layout/table';
 
-// 6. Vendors
+// 4. Pages
+@import
+'pages/mouse-zoom';
 
-// 7. Vendors Extensions - overschrijf stylen van vendors
+// 5. Themes
+
+// 6. Utils
+
+// 7. Vendors
