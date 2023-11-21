@@ -1,5 +1,5 @@
 <navigatie-menu></navigatie-menu>
-<div class="main-area">
+<div class="main-area page">
   <div>
     <button class="show-processes disabled-spinner" *ngrxLet="stepsObservable$; let done = complete" (click)="showProcessSteps()"
             [disabled]="loadingProcessSteps" [ngClass]="{'not-allowed': !done && stepsObservable$}">
