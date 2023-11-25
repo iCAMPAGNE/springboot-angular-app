@@ -1,0 +1,24 @@
+<navigatie-menu></navigatie-menu>
+<form class="main-area page">
+  <mat-slide-toggle>Toggle me!</mat-slide-toggle>
+  <button mat-fab extended>
+    <mat-icon>home</mat-icon>
+    Home
+  </button>
+  <button mat-raised-button color="warn">Raising</button>
+
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput />
+  </mat-form-field>
+  <br>
+  <mat-toolbar>
+    <span>My App</span>
+    <button mat-button>Login</button>
+    <button mat-button>Sign up</button>
+  </mat-toolbar>
+  <button mat-raised-button (click)="clickFavorite()">
+    <mat-icon>favorite</mat-icon>
+    Click me!
+  </button>
+</form>

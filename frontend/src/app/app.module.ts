@@ -16,6 +16,14 @@ import { AttributeDirective } from './directives/attribute.directive';
 import { SingleHostElementAttributeDirective } from './directives/single-host-element-attribute.directive';
 import { StructuralDirective } from './directives/structural.directive';
 import { LetDirective } from "@ngrx/component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialdesignComponent } from './components/materialdesign/materialdesign.component';
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
+import {MatInputModule} from "@angular/material/input";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -29,16 +37,23 @@ import { LetDirective } from "@ngrx/component";
     DynamicStylingComponent,
     AttributeDirective,
     SingleHostElementAttributeDirective,
-    StructuralDirective
+    StructuralDirective,
+    MaterialdesignComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    LetDirective
+    LetDirective,
+    MatSlideToggleModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatInputModule,
+    MatToolbarModule
   ],
-  providers: [],
+  providers: [MatSnackBar],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
