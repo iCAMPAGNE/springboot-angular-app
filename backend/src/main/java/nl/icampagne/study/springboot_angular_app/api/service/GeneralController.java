@@ -18,7 +18,6 @@ public class GeneralController {
     private final Properties projectProperties = new Properties();
     private final Properties buildProperties = new Properties();
 
-    @Autowired
     GeneralController() {
         try {
             projectProperties.load(getClass().getClassLoader().getResourceAsStream("project.properties"));
