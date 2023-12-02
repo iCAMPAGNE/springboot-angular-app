@@ -18,8 +18,11 @@ export class BackendService {
     constructor(private readonly httpClient: HttpClient) { }
 
     getVersion():Observable<any> {
-        console.log('getVersion');
         return this.httpClient.get(this.rootContex + 'version');
+    }
+
+    getInfo():Observable<any> {
+        return this.httpClient.get(this.rootContex + 'info');
     }
 
     getProcessSteps(): Observable<any> {

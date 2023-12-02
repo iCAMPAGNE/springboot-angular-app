@@ -31,7 +31,7 @@ public class ProcessStepsController {
   @PostMapping(value = "/process-step")
   public ResponseEntity<String> storeProcessStep(@RequestBody final ProcessStepForm processStepForm) {
     final String resultText = processStepsService.storeProcessStep(processStepForm);
-    return  ResponseEntity.ok("{\"result\": \"" + resultText + "\"}");
+    return ResponseEntity.ok("{\"result\": \"" + resultText + "\"}");
   }
 
   @GetMapping(value = "/process-steps-count")

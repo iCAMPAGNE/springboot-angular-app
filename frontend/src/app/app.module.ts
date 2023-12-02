@@ -16,6 +16,7 @@ import { AttributeDirective } from './directives/attribute.directive';
 import { SingleHostElementAttributeDirective } from './directives/single-host-element-attribute.directive';
 import { StructuralDirective } from './directives/structural.directive';
 import { LetDirective } from "@ngrx/component";
+import { SecurityComponent } from './components/security/security.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LetDirective } from "@ngrx/component";
     DynamicStylingComponent,
     AttributeDirective,
     SingleHostElementAttributeDirective,
-    StructuralDirective
+    StructuralDirective,
+    SecurityComponent
   ],
   imports: [
     BrowserModule,
