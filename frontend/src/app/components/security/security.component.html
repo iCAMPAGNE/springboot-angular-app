@@ -1,0 +1,9 @@
+<navigatie-menu></navigatie-menu>
+
+<form class="page">
+  <button (click)="getPublicCall()">Public, no credentials needed</button><br>
+  <button (click)="getPrivateCall()">Private, Basic Authorisation needed</button><br>
+  <button (click)="getPrivateCallFailing()">Private, wrong credentials</button><br>
+
+  {{reply}}{{error}}
+</form>
