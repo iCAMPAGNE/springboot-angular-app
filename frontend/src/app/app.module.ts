@@ -8,7 +8,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {NavigatieMenuComponent} from "./components/navigatie-menu/navigatie-menu.component";
 import {ObstestComponent} from "./components/obstest/obstest.component";
 import { MousewheelScrollingComponent } from './components/mousewheel-scrolling/mousewheel-scrolling.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ProcessStepsComponent } from './components/process-steps/process-steps.component';
 import { ThreeDComponent } from './components/three-d/three-d.component';
 import { DynamicStylingComponent } from './components/dynamic-styling/dynamic-styling.component';
@@ -24,12 +24,21 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatRadioModule} from "@angular/material/radio";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatSelectModule} from "@angular/material/select";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatTableModule} from "@angular/material/table";
+import {MatGridListModule} from "@angular/material/grid-list";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigatieMenuComponent,
     HomeComponent,
+    MaterialdesignComponent,
     ObstestComponent,
     MousewheelScrollingComponent,
     ProcessStepsComponent,
@@ -37,8 +46,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
     DynamicStylingComponent,
     AttributeDirective,
     SingleHostElementAttributeDirective,
-    StructuralDirective,
-    MaterialdesignComponent
+    StructuralDirective
   ],
   imports: [
     BrowserModule,
@@ -46,14 +54,23 @@ import {MatSnackBar} from '@angular/material/snack-bar';
     HttpClientModule,
     FormsModule,
     LetDirective,
-    MatSlideToggleModule,
     BrowserAnimationsModule,
+    MatCheckboxModule,
+    MatSlideToggleModule,
+    ReactiveFormsModule,
+    MatRadioModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatPaginatorModule,
     MatIconModule,
     MatButtonModule,
-    MatInputModule,
+    MatTooltipModule,
+    MatTableModule,
+    MatGridListModule,
     MatToolbarModule
   ],
-  providers: [MatSnackBar],
+  providers: [MatSnackBar, NavigatieMenuComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
