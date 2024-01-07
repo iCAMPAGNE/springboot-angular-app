@@ -20,3 +20,7 @@ select {
     border-radius: 0.5em;
     border: blue 1px solid;
 }
+
+.mat-mdc-radio-button.mat-accent {
+    --mdc-radio-selected-icon-color: red;
+}

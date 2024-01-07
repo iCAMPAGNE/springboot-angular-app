@@ -7,6 +7,7 @@ import {ProcessStepsComponent} from "./components/process-steps/process-steps.co
 import {ThreeDComponent} from "./components/three-d/three-d.component";
 import {DynamicStylingComponent} from "./components/dynamic-styling/dynamic-styling.component";
 import {SecurityComponent} from "./components/security/security.component";
+import {MaterialdesignComponent} from "./components/materialdesign/materialdesign.component";
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
     { path: 'observableTest', component: ObstestComponent },
     { path: 'processSteps', component: ProcessStepsComponent },
     { path: 'security', component: SecurityComponent },
+    { path: 'materialdesign', component: MaterialdesignComponent },
     { path: 'three-d', component: ThreeDComponent },
     { path: 'mousewheelScrolling', component: MousewheelScrollingComponent }
 ];
