@@ -53,6 +53,12 @@ div.actions {
     font-family: inherit;
 }
 
+.mat-mdc-raised-button > .mat-icon {
+    font-size: 2rem;
+    width: 2rem;
+    height: 2rem;
+}
+
 td.mat-footer-paginator {
     border-top: var(--mat-table-row-item-outline-color, rgba(0, 0, 0, 0.12)) 1px solid;
 }

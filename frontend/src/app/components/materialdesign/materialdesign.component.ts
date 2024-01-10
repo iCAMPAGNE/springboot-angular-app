@@ -10,12 +10,18 @@ import {MatPaginator} from "@angular/material/paginator";
   styleUrls: ['./materialdesign.component.scss'],
 })
 export class MaterialdesignComponent implements OnInit, AfterViewInit {
+  directionControl = new FormControl(false);
   hideRequiredControl = new FormControl(false);
   floatLabelControl = new FormControl('auto' as FloatLabelType);
   options = this._formBuilder.group({
     hideRequired: this.hideRequiredControl,
     floatLabel: this.floatLabelControl,
+    direction: this.directionControl
   });
+
+  direction = this.directionControl.value;
+
+  readonly  = true;
 
   @ViewChild('paginator') paginator!: MatPaginator;
   @ViewChild('paginatorPageSize') paginatorPageSize!: MatPaginator;
@@ -61,6 +67,12 @@ export class MaterialdesignComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+  }
+
+  preventDefault() {
+    if (this.readonly) {
+      this.directionControl.setValue(this.direction);
+    }
   }
 
   getFloatLabelValue(): FloatLabelType {

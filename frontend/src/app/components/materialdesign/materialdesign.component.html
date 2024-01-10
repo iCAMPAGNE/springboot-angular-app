@@ -3,7 +3,12 @@
 <div class="example-container">
   <form [formGroup]="options">
 
-    <mat-slide-toggle>Toggle me!</mat-slide-toggle>
+    <div style="cursor: not-allowed">
+    Left
+    <mat-slide-toggle (click)="preventDefault()" [formControl]="directionControl" style="cursor: not-allowed">Toggle me!</mat-slide-toggle>
+    RIGHT
+    </div>
+    Direction: {{directionControl.getRawValue()}}
 
     <mat-checkbox [formControl]="hideRequiredControl">Hide required marker</mat-checkbox>
     <div>
@@ -13,6 +18,10 @@
         <mat-radio-button value="always">Always</mat-radio-button>
       </mat-radio-group>
     </div>
+
+    <button mat-raised-button>
+      <mat-icon>save</mat-icon>
+    </button>
 
     <div class="example-form-fields">
       <mat-form-field
