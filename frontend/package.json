@@ -1,6 +1,6 @@
 {
   "name": "springboot-angular-app",
-  "version": "0.2.19",
+  "version": "0.2.20",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json --port 4212 -o",
@@ -9,7 +9,8 @@
     "test": "ng test --browsers ChromeHeadless --watch=false --karma-config=karma.conf.js",
     "testcoverage": "ng test --browsers ChromeHeadless --watch=false --code-coverage --karma-config=karma.conf.js",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "cypress:open": "cypress open"
   },
   "private": true,
   "dependencies": {
@@ -44,6 +45,7 @@
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
     "codelyzer": "^6.0.2",
+    "cypress": "^13.7.2",
     "eslint": "^8.51.0",
     "jasmine-core": "~3.10.1",
     "jasmine-spec-reporter": "~7.0.0",
