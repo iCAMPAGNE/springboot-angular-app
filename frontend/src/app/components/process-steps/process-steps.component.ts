@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BackendService} from "../../services/backend.service";
 import {Observable, Observer, Subscription} from "rxjs";
 import {ProcessStep} from "../../models/api.model";
@@ -8,7 +8,7 @@ import {ProcessStep} from "../../models/api.model";
   templateUrl: './process-steps.component.html',
   styleUrls: ['./process-steps.component.scss']
 })
-export class ProcessStepsComponent {
+export class ProcessStepsComponent implements OnInit {
   stepDescription$: Subscription | undefined;
   stepsObservable$: Observable<any> | undefined;
   selectStepOptions: any[] = [{value:-1,text:'Loading...'}];
@@ -22,6 +22,7 @@ export class ProcessStepsComponent {
   }
 
   ngOnInit() {
+    this.updateSteps();
   }
 
   showProcessSteps() {
@@ -75,6 +76,7 @@ export class ProcessStepsComponent {
         this.editProcessStep.order = undefined;
         if (reply) {
           this.message = reply.result;
+          this.updateSteps();
         } else {
           this.message = 'Het toevoegen van een proces stap is mislukt.';
         }
@@ -89,21 +91,18 @@ export class ProcessStepsComponent {
     })
   }
 
-  selectStepNr(event:Event) {
-    if (event.eventPhase === 2) {
-      this.loadingNumberOfStep = true;
-      this.selectStepOptions =[];
-      this.message = '';
-      this.backendService.getNumberOfProcessSteps().subscribe((count:number) => {
-        this.selectStepOptions = new Array(count + 1);
-        this.selectStepOptions[0] = {value:0,text:'bovenaan'};
-        for (let index = 1; index < count; index++) {
-          this.selectStepOptions[index] = {value:index,text:'Na stap ' + index};
-        }
-        this.selectStepOptions[count] = {value:count,text:'onderaan'};
-        this.loadingNumberOfStep = false;
-      })
-    }
+  updateSteps() {
+    this.loadingNumberOfStep = true;
+    this.selectStepOptions =[];
+    this.message = '';
+    this.backendService.getNumberOfProcessSteps().subscribe((count:number) => {
+      this.selectStepOptions = new Array(count + 1);
+      this.selectStepOptions[0] = {value:0,text:'bovenaan'};
+      for (let index = 1; index < count; index++) {
+        this.selectStepOptions[index] = {value:index,text:'Na stap ' + index};
+      }
+      this.selectStepOptions[count] = {value:count,text:'onderaan'};
+      this.loadingNumberOfStep = false;
+    })
   }
-
 }
