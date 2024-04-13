@@ -12,7 +12,7 @@
         <div [innerHTML]="currentStep.description"></div>
       </div>
       <div class="error" *ngIf="error">Er is een foutmelding opgetreden: {{error}}</div>
-      <div class="complete" *ngIf="done">Alle stappen zijn uitgevoerd.</div>
+      <div class="complete" *ngIf="done" data-test='submitIsVisible'>Alle stappen zijn uitgevoerd.</div>
     </div>
   </div>
 

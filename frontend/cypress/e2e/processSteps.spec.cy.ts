@@ -3,11 +3,12 @@ describe('Process steps spec', () => {
     cy.visit('http://localhost:4212/springboot-angular-app/')
     cy.contains('Process steps').click()
     cy.url().should('include', '/processSteps')
-    cy.contains('Toon proces stappen').click()
-    cy.wait(8000)
   })
 
   it('navigate to process steps, create new step and show steps', () => {
+    cy.contains('Toon proces stappen').click()
+    cy.get('[data-test=submitIsVisible]', { timeout: 60000 }).should('be.visible');
+
     // Get textarea, type into it
     cy.get('textarea').type('This is the first step to be taken.')
     //  Verify that the content has been updated

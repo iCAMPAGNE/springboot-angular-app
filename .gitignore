@@ -12,6 +12,8 @@ lib/
 daily-email-content.html
 start-me.sh
 
+### Cypress e2e
+screenshots/
 
 ### IntelliJ IDEA ###
 /.idea
