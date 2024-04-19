@@ -6,12 +6,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/admin")
-public class AdminController {
+@RequestMapping("/api/private")
+public class PrivateController {
 
-  @GetMapping("/info")
+  @GetMapping("/login")
   public ResponseEntity<String> getInfo() {
-    final String info = "Admin OK";
-    return ResponseEntity.ok("{\"info\": \"" + info + "\"}");
+    final String info = "OK";
+    return ResponseEntity.ok("{\"login\": \"" + info + "\"}");
+  }
+
+  @GetMapping("greeting")
+  public ResponseEntity<String> getPrivateGreeting() {
+    return ResponseEntity.ok("{\"greeting\": \"Hello private\"}");
   }
 }

@@ -25,4 +25,8 @@ export class NavigatieMenuComponent implements OnInit {
       error: (err: any) => console.log('Retrieving version from backend failed.')
     });
   }
+
+  get privateStatus() {
+    return sessionStorage.getItem('private') === 'true' ? 'Logout' : 'Login';
+  }
 }

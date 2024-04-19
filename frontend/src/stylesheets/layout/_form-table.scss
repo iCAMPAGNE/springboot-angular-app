@@ -1,0 +1,34 @@
+table.form-table {
+    background-color: lightsteelblue;
+    border-radius: 0.5em;
+    padding: 3em;
+    width: 50em;
+    tr {
+        &:nth-child(even) {
+            height: 2em;
+            vertical-align: top;
+            font-size: smaller;
+            span {
+                margin-left: 0.5em;
+                color: red;
+                font-weight: bold;
+            }
+        }
+    }
+    td {
+        &:first-child {
+            width: 5em;
+            text-align: right;
+        }
+    }
+    input {
+        width: 25em;
+    }
+    button {
+        width: 26em;
+        height: 3em;
+        border-color: blue;
+        border-radius: 0.5em;
+        background-color: aqua;
+    }
+}

@@ -5,12 +5,15 @@ input[type=text], select, textarea {
     }
 }
 
-textarea {
+textarea, input, button {
     border-radius: 0.5em;
     border: blue 1px solid;
     background-color: aliceblue;
     resize: none;
     padding: 0.5em;
+    &:focus {
+        outline: none;
+    }
 }
 
 select {

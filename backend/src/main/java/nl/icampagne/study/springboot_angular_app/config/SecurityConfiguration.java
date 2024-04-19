@@ -8,19 +8,22 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
 
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-    http
-        .authorizeHttpRequests(authz -> authz
-            .requestMatchers("/api/admin/**").authenticated()
+
+    http.authorizeHttpRequests(authorize -> authorize
+            .requestMatchers("api/private/**").authenticated()
             .anyRequest().permitAll()
         )
         .csrf(AbstractHttpConfigurer::disable)
-        .httpBasic(Customizer.withDefaults());
+        .httpBasic(withDefaults())
+        .formLogin(withDefaults());
     return http.build();
   }
 }

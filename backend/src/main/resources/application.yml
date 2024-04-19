@@ -3,6 +3,6 @@ server:
 spring:
   security:
     user:
-      name: 'admin'
-      password: 'admin'
+      name: 'private'
+      password: 'Private*007'
       roles: 'ADMIN'

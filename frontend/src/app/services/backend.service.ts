@@ -36,4 +36,8 @@ export class BackendService {
     storeProcessStep(processStep: ProcessStep): Observable<any> {
         return this.httpClient.post<ProcessStep>(this.rootContex + 'process-step', processStep, this.httpOptions);
     }
+
+    getPublicGreeting():Observable<any> {
+        return this.httpClient.get(this.rootContex +'public/greeting');
+    }
 }

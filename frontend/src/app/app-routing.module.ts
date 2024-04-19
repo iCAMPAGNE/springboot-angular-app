@@ -8,10 +8,12 @@ import {ThreeDComponent} from "./components/three-d/three-d.component";
 import {DynamicStylingComponent} from "./components/dynamic-styling/dynamic-styling.component";
 import {SecurityComponent} from "./components/security/security.component";
 import {MaterialdesignComponent} from "./components/materialdesign/materialdesign.component";
+import {LoginComponent} from "./components/login/login.component";
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'home', component: HomeComponent },
+    { path: 'login', component: LoginComponent },
     { path: 'dynamic-styling', component: DynamicStylingComponent },
     { path: 'observableTest', component: ObstestComponent },
     { path: 'processSteps', component: ProcessStepsComponent },

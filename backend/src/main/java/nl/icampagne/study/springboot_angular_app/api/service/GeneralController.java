@@ -46,4 +46,9 @@ public class GeneralController {
     public Observable<String> getComment() {
         return Observable.just("Een", "Twee");
     }
+
+    @GetMapping("public/greeting")
+    public ResponseEntity<String> getPublicGreeting() {
+        return ResponseEntity.ok("{\"greeting\": \"Hello public\"}");
+    }
 }

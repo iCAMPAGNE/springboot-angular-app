@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {BackendService} from "../../services/backend.service";
-import { AdminService } from "../../services/admin.service";
+import {SecurityService} from "../../services/security.service";
 
 @Component({
   selector: 'app-security',
@@ -13,7 +13,7 @@ export class SecurityComponent {
   error = '';
 
 
-  constructor(private backendService: BackendService, private adminService: AdminService) { }
+  constructor(private backendService: BackendService, private securityService: SecurityService) { }
 
   getPublicCall() {
     this.reply = '';
@@ -30,17 +30,41 @@ export class SecurityComponent {
     });
   }
 
-  getPrivateCall() {
+  getPublicGreeting() {
     this.reply = '';
     this.error = '';
-    this.adminService.getInfo('admin', 'admin').subscribe({
+    this.backendService.getPublicGreeting().subscribe({
       next: (response: any) => {
         console.log(response);
-        this.reply = 'OK: ' + response.info;
+        this.reply = 'OK: ' + response.result;
       },
       error: error => {
         console.log(error);
-        this.error = error.message;
+        this.error = 'ERROR: ' + error.message;
+      }
+    });
+  }
+
+  getPrivateGreeting() {
+    this.reply = '';
+    this.error = '';
+    this.securityService.getPrivateGreeting().subscribe({
+      next: (response: any) => {
+        console.log(response);
+        this.reply = 'OK: ' + response.result;
+      },
+      error: error => {
+        console.log(error.error.text);
+        this.error = 'ERROR: ' + error.message;
+        const winHtml = error.error.text.replace('/springboot-angular-app/login', 'http://localhost:8092/springboot-angular-app/login');
+        const winUrl = URL.createObjectURL(
+          new Blob([winHtml], { type: "text/html" })
+        );
+        const win = window.open(
+          winUrl,
+          "win",
+          `width=800,height=400,screenX=200,screenY=200`
+        );
       }
     });
   }
@@ -48,7 +72,7 @@ export class SecurityComponent {
   getPrivateCallFailing() {
     this.reply = '';
     this.error = '';
-    this.adminService.getInfo('admin', 'wrong').subscribe({
+    this.securityService.getInfo('admin', 'wrong').subscribe({
       next: (response: any) => {
         console.log(response);
         this.reply = 'OK: ' + response.result;

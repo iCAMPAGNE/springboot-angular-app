@@ -33,6 +33,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatTableModule} from "@angular/material/table";
 import {MatGridListModule} from "@angular/material/grid-list";
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
     AttributeDirective,
     SingleHostElementAttributeDirective,
     StructuralDirective,
-    SecurityComponent
+    SecurityComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
