@@ -13,7 +13,7 @@ import {LoginComponent} from "./components/login/login.component";
 const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'home', component: HomeComponent },
-    { path: 'login', component: LoginComponent },
+    { path: 'loginPage', component: LoginComponent },
     { path: 'dynamic-styling', component: DynamicStylingComponent },
     { path: 'observableTest', component: ObstestComponent },
     { path: 'processSteps', component: ProcessStepsComponent },

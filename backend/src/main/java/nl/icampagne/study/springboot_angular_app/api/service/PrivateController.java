@@ -10,13 +10,24 @@ import org.springframework.web.bind.annotation.RestController;
 public class PrivateController {
 
   @GetMapping("/login")
-  public ResponseEntity<String> getInfo() {
+  public ResponseEntity<String> login() {
     final String info = "OK";
     return ResponseEntity.ok("{\"login\": \"" + info + "\"}");
+  }
+
+  @GetMapping("/logout")
+  public ResponseEntity<String> logout() {
+    final String info = "OK";
+    return ResponseEntity.ok("{\"logout\": \"" + info + "\"}");
   }
 
   @GetMapping("greeting")
   public ResponseEntity<String> getPrivateGreeting() {
     return ResponseEntity.ok("{\"greeting\": \"Hello private\"}");
+  }
+
+  @GetMapping("status")
+  public ResponseEntity<String> getPrivateStatus() {
+    return ResponseEntity.ok("{\"status\": \"I am fine\"}");
   }
 }

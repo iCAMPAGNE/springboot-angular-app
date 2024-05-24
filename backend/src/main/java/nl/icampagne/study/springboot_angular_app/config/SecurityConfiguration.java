@@ -18,12 +18,15 @@ public class SecurityConfiguration {
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
     http.authorizeHttpRequests(authorize -> authorize
-            .requestMatchers("api/private/**").authenticated()
-            .anyRequest().permitAll()
+                .requestMatchers("security","loginPage","runtime.js","main.js","polyfills.js","styles.css").permitAll()
+//            .requestMatchers("api/private/**").authenticated()
+            .anyRequest().authenticated()
         )
         .csrf(AbstractHttpConfigurer::disable)
         .httpBasic(withDefaults())
-        .formLogin(withDefaults());
+//        .formLogin(login -> login.loginPage("/loginPage").successHandler((request, response, authentication) -> response.setStatus(200)))
+//        .formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer.loginPage("/loginPage").successForwardUrl("/security"))
+        ;
     return http.build();
   }
 }

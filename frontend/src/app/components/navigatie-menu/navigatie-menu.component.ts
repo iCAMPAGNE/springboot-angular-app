@@ -27,6 +27,7 @@ export class NavigatieMenuComponent implements OnInit {
   }
 
   get privateStatus() {
+    console.log('NavigatieMenuComponent privateStatus is ' + sessionStorage.getItem('private'));
     return sessionStorage.getItem('private') === 'true' ? 'Logout' : 'Login';
   }
 }

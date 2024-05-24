@@ -51,12 +51,36 @@ export class SecurityComponent {
     this.securityService.getPrivateGreeting().subscribe({
       next: (response: any) => {
         console.log(response);
-        this.reply = 'OK: ' + response.result;
+        this.reply = 'OK: ' + response['greeting'];
       },
       error: error => {
         console.log(error.error.text);
         this.error = 'ERROR: ' + error.message;
-        const winHtml = error.error.text.replace('/springboot-angular-app/login', 'http://localhost:8092/springboot-angular-app/login');
+        const winHtml = error.error.text.replace('/springboot-angular-app/login', 'http://localhost:8092/springboot-angular-app/loginPage');
+        const winUrl = URL.createObjectURL(
+          new Blob([winHtml], { type: "text/html" })
+        );
+        const win = window.open(
+          winUrl,
+          "win",
+          `width=800,height=400,screenX=200,screenY=200`
+        );
+      }
+    });
+  }
+
+  getPrivateStatus() {
+    this.reply = '';
+    this.error = '';
+    this.securityService.getPrivateStatus().subscribe({
+      next: (response: any) => {
+        console.log(response);
+        this.reply = 'OK: ' + response['status'];
+      },
+      error: error => {
+        console.log(error.error.text);
+        this.error = 'ERROR: ' + error.message;
+        const winHtml = error.error.text;//.replace('/springboot-angular-app/login', 'http://localhost:8092/springboot-angular-app/login');
         const winUrl = URL.createObjectURL(
           new Blob([winHtml], { type: "text/html" })
         );

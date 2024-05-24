@@ -18,15 +18,40 @@ export class SecurityService {
   constructor(private readonly httpClient: HttpClient) { }
 
   getPrivateGreeting():Observable<any> {
-    return this.httpClient.get('http://localhost:8092/springboot-angular-app/api/private/greeting');
+    return this.httpClient.get(this.rootContex + 'private/greeting');
   }
 
-  getPrivateLogin(username: string, password: string):Observable<any> {
+  getPrivateStatus():Observable<any> {
+    return this.httpClient.get(this.rootContex + 'private/status');
+  }
+
+  login():Observable<any> {
+    return this.httpClient.get(this.rootContex + 'private/login');
+  }
+
+  getPrivateLogin(username: string, password: string) {
     return this.httpClient.get(this.rootContex +'private/login',
       { headers: {
         'Authorization': 'Basic ' + btoa(username + ':' + password)
       }
-    });
+    ,responseType: 'blob'}
+  );
+  }
+
+  doLogin(username: string, password: string):Observable<any> {
+    return this.httpClient.get('login',
+      { headers: {
+          'Authorization': 'Basic ' + btoa(username + ':' + password)
+        }
+      });
+  }
+
+  getPrivateLogout(username: string, password: string):Observable<any> {
+    return this.httpClient.get(this.rootContex +'private/logout',
+      { headers: {
+          'Authorization': 'Basic ' + btoa(username + ':' + password)
+        }
+      });
   }
 
   getInfo(name: string, password: string):Observable<any> {
