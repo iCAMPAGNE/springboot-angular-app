@@ -12,3 +12,16 @@
     </button>
   </div>
 </form>
+<br>
+
+<div class="default-area">
+  <button (click)="openXmlWindow()">Open XML window</button>
+  <button (click)="openHtmlWindow()">Open HTML window</button>
+  <table class="status">
+    <tr><th>Moment</th><th>status</th></tr>
+    <tr><td>Opening</td><td>{{contentType1}}</td></tr>
+    <tr><td>Opened</td><td>{{contentType2}}</td></tr>
+    <tr><td>Final</td><td>{{contentType3}}</td></tr>
+  </table>
+  <button (click)="closeWindow()">Close window</button>
+</div>

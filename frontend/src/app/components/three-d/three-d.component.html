@@ -1,5 +1,6 @@
-<navigatie-menu></navigatie-menu>
+<!--<navigatie-menu></navigatie-menu>-->
 <div class="three-d-page">
-  <div class="circle left" style="--offsetx: {{900-circleOffset - circlePos}}px; --offsety: {{400 - circlePos}}px; --radius: {{radius}}px;"></div>
-  <div class="circle right" style="--offsetx: {{850+circleOffset - circlePos}}px; --offsety: {{400 - circlePos}}px; --radius: {{radius}}px;"></div>
+  <button class="small" (click)="planetOrbit()">start</button>
+  <div class="circle left" style="--offsetx: {{planetPositionX + objectOffset}}px; --offsety: {{400 - circlePos}}px; --radius: {{radius}}px;"></div>
+  <div class="circle right" style="--offsetx: {{planetPositionX - objectOffset}}px; --offsety: {{400 - circlePos}}px; --radius: {{radius}}px;"></div>
 </div>

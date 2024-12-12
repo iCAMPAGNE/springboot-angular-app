@@ -12,3 +12,17 @@ div.items-in-row {
     display: inline-flex;
 }
 
+div.default-area {
+    width: 10em;
+    height: 6em;
+    margin: 2em;
+    border-right: 0.3em;
+}
+
+table.status {
+    text-align: left;
+    th, td {
+        padding: 0 1em;
+        white-space: nowrap;
+    }
+}
