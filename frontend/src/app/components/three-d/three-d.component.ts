@@ -7,12 +7,14 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ThreeDComponent implements OnInit {
   PPC = 50; // Pixels Per Centimeter
-  ScreenDistance = 12 * this.PPC;
-  PlanetRadius = 60;
-  PlanetOrbitRadius = 600;
-  ScreenToPlanetMiddleDistance = 300;
-  PlanetOrbitPositionX = 700;
-  PlanetOrbitPositionY = 400;
+
+  EyesDistance = this.PPC * 6;
+  ScreenDistance = this.PPC * 12;
+  PlanetRadius = this.PPC * 1.2;
+  PlanetOrbitRadius = this.PPC * 12;
+  ScreenToPlanetMiddleDistance = this.PPC * 5;
+  PlanetOrbitPositionX = this.PPC * 18;
+  PlanetOrbitPositionY = this.PPC * 8;
 
   planetPositionX = this.PlanetOrbitPositionX + Math.sin(2*Math.PI/3) * this.PlanetOrbitRadius;
   planetPositionY = this.PlanetOrbitPositionY;
@@ -29,57 +31,21 @@ export class ThreeDComponent implements OnInit {
   }
 
   planetOrbit(): void {
-    for (let t = 2*Math.PI/3; t < 14*Math.PI/3; t += 0.002*Math.PI) {
+    const startingAngle  = Math.PI - Math.acos(this.ScreenToPlanetMiddleDistance/this.PlanetOrbitRadius);
+    for (let t = 0; t <= 2000; t++) {
+      const angle = t * 0.002*Math.PI + startingAngle;
       setTimeout(() => {
-        let planetDistance= Math.sqrt(
-          Math.pow(Math.cos(t) * this.PlanetOrbitRadius + this.ScreenDistance + this.ScreenToPlanetMiddleDistance,2) +
-          Math.pow(Math.sin(t) * this.PlanetOrbitRadius,2));
-        this.radius = this.PlanetRadius * this.ScreenDistance / planetDistance;
-        this.planetPositionX = this.PlanetOrbitPositionX + this.ScreenDistance * this.PlanetOrbitRadius*Math.sin(t) /(this.ScreenDistance + this.ScreenToPlanetMiddleDistance + this.PlanetOrbitRadius*Math.cos(t));
-        this.objectOffset = 2 * this.PPC * (Math.cos(t) * this.PlanetOrbitRadius + this.ScreenToPlanetMiddleDistance) / (Math.cos(t) * this.PlanetOrbitRadius + this.ScreenDistance + this.ScreenToPlanetMiddleDistance);
-
-      }, 5000*t);
-
+        this.rotateObject(angle);
+      }, 20*t + 2000);
     }
   }
 
-  firstMovement(): void {
-    let t = 0;
-    for(;t<250; t++) {
-      setTimeout(() => {
-        this.circleOffset += 0.5;
-        this.circlePos += 0.5;
-        this.radius++;
-      }, 3000 + 50*t)
-    }
-    for(; t<500; t++) {
-      setTimeout(() => {
-        this.circleOffset -= 0.5;
-        this.circlePos -= 0.5;
-        this.radius--;
-      }, 3000 + 50*t)
-    }
-    for(;t<750; t++) {
-      setTimeout(() => {
-        this.circleOffset -= 0.5;
-        this.circlePos -= 0.0025;
-        this.radius -= 0.005;
-      }, 3000 + 50*t)
-    }
-    for(;t<1000; t++) {
-      setTimeout(() => {
-        this.circleOffset+= 0.5;
-        this.circlePos += 0.0025;
-        this.radius += 0.005;
-      }, 3000 + 50*t)
-    }
-    for(;t<1500; t++) {
-      setTimeout(() => {
-        this.circleOffset += 0.5;
-        this.circlePos += 0.5;
-        this.radius++;
-      }, 3000 + 50*t)
-    }
+  rotateObject(angle: number) {
+    const planetDistance= Math.sqrt(
+      Math.pow(Math.cos(angle) * this.PlanetOrbitRadius + this.ScreenDistance + this.ScreenToPlanetMiddleDistance,2) +
+      Math.pow(Math.sin(angle) * this.PlanetOrbitRadius,2));
+    this.radius = this.PlanetRadius * this.ScreenDistance / planetDistance;
+    this.planetPositionX = this.PlanetOrbitPositionX + this.ScreenDistance * this.PlanetOrbitRadius*Math.sin(angle) /(this.ScreenDistance + this.ScreenToPlanetMiddleDistance + this.PlanetOrbitRadius*Math.cos(angle));
+    this.objectOffset = (this.EyesDistance/2) * (Math.cos(angle) * this.PlanetOrbitRadius + this.ScreenToPlanetMiddleDistance) / (Math.cos(angle) * this.PlanetOrbitRadius + this.ScreenDistance + this.ScreenToPlanetMiddleDistance);
   }
-
 }
