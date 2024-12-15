@@ -1,6 +1,8 @@
 <!--<navigatie-menu></navigatie-menu>-->
 <div class="three-d-page">
   <button class="small" (click)="planetOrbit()">start</button>
-  <div class="circle left" style="--offsetx: {{planetPositionX + objectOffset}}px; --offsety: {{400 - circlePos}}px; --radius: {{radius}}px;"></div>
-  <div class="circle right" style="--offsetx: {{planetPositionX - objectOffset}}px; --offsety: {{400 - circlePos}}px; --radius: {{radius}}px;"></div>
+  <div *ngFor="let rotateObject of rotatingObjects">
+    <div class="circle left" style="--offsetx: {{rotateObject.planetPositionX + rotateObject.threeDoffset}}px; --offsety: {{400}}px; --radius: {{rotateObject.opticalRadius}}px;"></div>
+    <div class="circle right" style="--offsetx: {{rotateObject.planetPositionX - rotateObject.threeDoffset}}px; --offsety: {{400}}px; --radius: {{rotateObject.opticalRadius}}px;"></div>
+  </div>
 </div>
