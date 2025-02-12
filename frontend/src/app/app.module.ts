@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import {HttpClientModule} from "@angular/common/http";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import {NavigatieMenuComponent} from "./components/navigatie-menu/navigatie-menu.component";
 import {ObstestComponent} from "./components/obstest/obstest.component";
 import { MousewheelScrollingComponent } from './components/mousewheel-scrolling/mousewheel-scrolling.component';
@@ -35,46 +35,39 @@ import {MatTableModule} from "@angular/material/table";
 import {MatGridListModule} from "@angular/material/grid-list";
 import { LoginComponent } from './components/login/login.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    NavigatieMenuComponent,
-    HomeComponent,
-    MaterialdesignComponent,
-    ObstestComponent,
-    MousewheelScrollingComponent,
-    ProcessStepsComponent,
-    ThreeDComponent,
-    DynamicStylingComponent,
-    AttributeDirective,
-    SingleHostElementAttributeDirective,
-    StructuralDirective,
-    SecurityComponent,
-    LoginComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    LetDirective,
-    BrowserAnimationsModule,
-    MatCheckboxModule,
-    MatSlideToggleModule,
-    ReactiveFormsModule,
-    MatRadioModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatPaginatorModule,
-    MatIconModule,
-    MatButtonModule,
-    MatTooltipModule,
-    MatTableModule,
-    MatGridListModule,
-    MatToolbarModule
-  ],
-  providers: [MatSnackBar, NavigatieMenuComponent],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        NavigatieMenuComponent,
+        HomeComponent,
+        MaterialdesignComponent,
+        ObstestComponent,
+        MousewheelScrollingComponent,
+        ProcessStepsComponent,
+        ThreeDComponent,
+        DynamicStylingComponent,
+        AttributeDirective,
+        SingleHostElementAttributeDirective,
+        StructuralDirective,
+        SecurityComponent,
+        LoginComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        LetDirective,
+        BrowserAnimationsModule,
+        MatCheckboxModule,
+        MatSlideToggleModule,
+        ReactiveFormsModule,
+        MatRadioModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatPaginatorModule,
+        MatIconModule,
+        MatButtonModule,
+        MatTooltipModule,
+        MatTableModule,
+        MatGridListModule,
+        MatToolbarModule], providers: [MatSnackBar, NavigatieMenuComponent, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
