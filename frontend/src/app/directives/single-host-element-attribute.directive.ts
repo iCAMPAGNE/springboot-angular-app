@@ -1,7 +1,8 @@
 import {Attribute, Directive, ElementRef} from '@angular/core';
 
 @Directive({
-  selector: '[attr-dir]'
+    selector: '[attr-dir]',
+    standalone: false
 })
 export class SingleHostElementAttributeDirective {
 

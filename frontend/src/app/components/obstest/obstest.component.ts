@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Observable, Observer, of, Subject} from "rxjs";
 
 @Component({
-  selector: 'app-obstest',
-  templateUrl: './obstest.component.html'
+    selector: 'app-obstest',
+    templateUrl: './obstest.component.html',
+    standalone: false
 })
 export class ObstestComponent implements OnInit {
   showRightPanel: boolean = false;

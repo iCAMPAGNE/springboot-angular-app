@@ -8,9 +8,10 @@ const SCREEN_DISTANCE = PPC * 12; // Distance from viewer to screen.
 const ORBIT_CENTER = PPC * 5; // Distance from center of orbit to screen
 
 @Component({
-  selector: 'app-three-d',
-  templateUrl: './three-d.component.html',
-  styleUrls: ['./three-d.component.scss']
+    selector: 'app-three-d',
+    templateUrl: './three-d.component.html',
+    styleUrls: ['./three-d.component.scss'],
+    standalone: false
 })
 export class ThreeDComponent implements OnInit {
   rotatingObjects: RotatingObject[] = [];

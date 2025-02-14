@@ -3,9 +3,10 @@ import {interval, Observable} from "rxjs";
 import {map, take} from "rxjs/operators";
 
 @Component({
-  selector: 'app-dynamic-styling',
-  templateUrl: './dynamic-styling.component.html',
-  styleUrls: ['./dynamic-styling.component.scss']
+    selector: 'app-dynamic-styling',
+    templateUrl: './dynamic-styling.component.html',
+    styleUrls: ['./dynamic-styling.component.scss'],
+    standalone: false
 })
 export class DynamicStylingComponent {
 

@@ -4,9 +4,10 @@ import {Observable, Observer, Subscription} from "rxjs";
 import {ProcessStep} from "../../models/api.model";
 
 @Component({
-  selector: 'app-process-steps',
-  templateUrl: './process-steps.component.html',
-  styleUrls: ['./process-steps.component.scss']
+    selector: 'app-process-steps',
+    templateUrl: './process-steps.component.html',
+    styleUrls: ['./process-steps.component.scss'],
+    standalone: false
 })
 export class ProcessStepsComponent implements OnInit {
   stepDescription$: Subscription | undefined;

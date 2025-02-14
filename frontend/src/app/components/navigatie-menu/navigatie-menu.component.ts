@@ -4,8 +4,9 @@ import {Version} from "../../models/api.model";
 import {BackendService} from "../../services/backend.service";
 
 @Component({
-  selector: 'navigatie-menu',
-  templateUrl: './navigatie-menu.component.html'
+    selector: 'navigatie-menu',
+    templateUrl: './navigatie-menu.component.html',
+    standalone: false
 })
 export class NavigatieMenuComponent implements OnInit {
 

@@ -5,9 +5,10 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 
 @Component({
-  selector: 'app-materialdesign',
-  templateUrl: './materialdesign.component.html',
-  styleUrls: ['./materialdesign.component.scss'],
+    selector: 'app-materialdesign',
+    templateUrl: './materialdesign.component.html',
+    styleUrls: ['./materialdesign.component.scss'],
+    standalone: false
 })
 export class MaterialdesignComponent implements OnInit, AfterViewInit {
   directionControl = new FormControl(false);

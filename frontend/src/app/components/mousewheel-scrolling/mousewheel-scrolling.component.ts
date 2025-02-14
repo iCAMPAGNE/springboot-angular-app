@@ -1,8 +1,9 @@
 import {AfterViewChecked, AfterViewInit, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
 
 @Component({
-  selector: 'app-mousewheel-scrolling',
-  templateUrl: './mousewheel-scrolling.component.html'
+    selector: 'app-mousewheel-scrolling',
+    templateUrl: './mousewheel-scrolling.component.html',
+    standalone: false
 })
 export class MousewheelScrollingComponent implements OnInit, AfterViewChecked, AfterViewInit, OnDestroy {
 

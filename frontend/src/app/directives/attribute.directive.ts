@@ -1,8 +1,9 @@
 import {Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output, SimpleChange} from '@angular/core';
 
 @Directive({
-  selector: '[appAttribute]',
-  exportAs: 'exportDirective'
+    selector: '[appAttribute]',
+    exportAs: 'exportDirective',
+    standalone: false
 })
 export class AttributeDirective {
 

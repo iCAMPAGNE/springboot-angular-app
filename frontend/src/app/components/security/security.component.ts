@@ -3,9 +3,10 @@ import {BackendService} from "../../services/backend.service";
 import {SecurityService} from "../../services/security.service";
 
 @Component({
-  selector: 'app-security',
-  templateUrl: './security.component.html',
-  styleUrls: ['./security.component.scss']
+    selector: 'app-security',
+    templateUrl: './security.component.html',
+    styleUrls: ['./security.component.scss'],
+    standalone: false
 })
 export class SecurityComponent {
   title = 'frontend';
