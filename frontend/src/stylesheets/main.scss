@@ -1,25 +1,21 @@
 
 // 1. Base
-@import
-'base/generic';
+@use 'base/generic';
 
 // 2. Components
-@import
-'components/button',
-'components/input';
+@use 'components/button';
+@use 'components/input';
 
 // 3. Layout
-@import
-'layout/page',
-'layout/header',
-'layout/footer',
-'layout/form',
-'layout/table',
-'layout/form-table';
+@use 'layout/page';
+@use 'layout/header';
+@use 'layout/footer';
+@use 'layout/form';
+@use 'layout/table';
+@use 'layout/form-table';
 
 // 4. Pages
-@import
-'pages/mouse-zoom';
+@use 'pages/mouse-zoom';
 
 // 5. Themes
 
