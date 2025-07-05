@@ -20,11 +20,35 @@ export class MousewheelScrollingComponent implements OnInit, AfterViewChecked, A
 
   ships: any = [];
 
+  uInputPoints: string = "";
+  uOutputPoints: string = "";
+  uLpoints: string = "";
+  uTotalPoints: string = "";
+  maxAmpliture = 110*Math.sqrt(2);
+  timeAxe: string = "";
+
   ngOnInit(): void {
     this.minutes =
         [...[...Array.from(Array(23).keys())].map(i => i+1), ...Array.from(Array(24).keys()), ...Array.from(Array(24).keys()), ...Array.from(Array(2).keys())]
     this.ships =
         [{pos: {x: 60, y:0}, length: 2}, {pos: {x: 59, y:25}, length: 0.5}, {pos: {x: 57, y:0}, length: 1.5}, {pos: {x: 50, y:75}, length: 4}];
+
+    const duration = 8*Math.PI;
+    this.timeAxe += "0," + (this.maxAmpliture + 10) + " " + 50*duration + "," + (this.maxAmpliture + 10);
+    for (let t=0; t <= duration; t += Math.PI/16) {
+      const uInput = Math.sin(t);
+      const uInputPoint: string = 50*t + "," + (this.maxAmpliture + 10 - this.maxAmpliture*uInput) + " ";
+      this.uInputPoints += uInputPoint;
+      const uOutput = Math.sin(t + Math.PI/2)/4;
+      const uOutputPoint: string = 50*t + "," + (this.maxAmpliture + 10 - this.maxAmpliture*uOutput) + " ";
+      this.uOutputPoints += uOutputPoint;
+      const uL = Math.sin(t - Math.PI/2)/3;
+      const uLpoint: string = 50*t + "," + (this.maxAmpliture + 10 - this.maxAmpliture*uL) + " ";
+      this.uLpoints += uLpoint;
+      const uTotal = uOutput + uL;
+      const uTotalPoint = 50*t + "," + (this.maxAmpliture + 10 - this.maxAmpliture*uTotal) + " ";
+      this.uTotalPoints += uTotalPoint;
+    }
   }
 
   ngAfterViewInit(): void {
