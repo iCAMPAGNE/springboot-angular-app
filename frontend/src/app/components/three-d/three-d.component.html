@@ -1,9 +1,11 @@
 <!--<navigatie-menu></navigatie-menu>-->
 <div class="three-d-page">
   <button class="small" (click)="planetOrbit()">start</button>
-  <div *ngFor="let rotateObject of rotatingObjects">
-    <div class="circle left"
-         style="--offsetx: {{rotateObject.opticalX + rotateObject.threeDoffset}}px; --offsety: {{rotateObject.opticalY}}px; --radius: {{rotateObject.opticalRadius}}px;"></div>
-    <div class="circle right" style="--offsetx: {{rotateObject.opticalX - rotateObject.threeDoffset}}px; --offsety: {{rotateObject.opticalY}}px; --radius: {{rotateObject.opticalRadius}}px;"></div>
-  </div>
+  @for (rotateObject of rotatingObjects; track rotateObject) {
+    <div>
+      <div class="circle left"
+      style="--offsetx: {{rotateObject.opticalX + rotateObject.threeDoffset}}px; --offsety: {{rotateObject.opticalY}}px; --radius: {{rotateObject.opticalRadius}}px;"></div>
+      <div class="circle right" style="--offsetx: {{rotateObject.opticalX - rotateObject.threeDoffset}}px; --offsety: {{rotateObject.opticalY}}px; --radius: {{rotateObject.opticalRadius}}px;"></div>
+    </div>
+  }
 </div>

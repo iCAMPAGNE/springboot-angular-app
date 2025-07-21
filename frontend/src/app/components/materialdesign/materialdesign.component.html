@@ -2,11 +2,12 @@
 
 <div class="example-container">
   <form [formGroup]="options">
+    <mat-checkbox [formControl]="writeControl">Enable write</mat-checkbox>
 
     <div style="cursor: not-allowed">
-    Left
-    <mat-slide-toggle (click)="preventDefault()" [formControl]="directionControl" style="cursor: not-allowed">Toggle me!</mat-slide-toggle>
-    RIGHT
+      Left
+      <mat-slide-toggle (click)="preventDefault()" [formControl]="directionControl" style="cursor: not-allowed">Toggle me!</mat-slide-toggle>
+      RIGHT
     </div>
     Direction: {{directionControl.getRawValue()}}
 
@@ -25,8 +26,8 @@
 
     <div class="example-form-fields">
       <mat-form-field
-          [hideRequiredMarker]="!!hideRequiredControl.value"
-          [floatLabel]="getFloatLabelValue()">
+        [hideRequiredMarker]="!!hideRequiredControl.value"
+        [floatLabel]="getFloatLabelValue()">
         <input matInput placeholder="Simple placeholder" required>
       </mat-form-field>
 
@@ -36,8 +37,8 @@
       </mat-form-field>
 
       <mat-form-field
-          [hideRequiredMarker]="!!hideRequiredControl.value"
-          [floatLabel]="getFloatLabelValue()">
+        [hideRequiredMarker]="!!hideRequiredControl.value"
+        [floatLabel]="getFloatLabelValue()">
         <mat-select required>
           <mat-option>-- None --</mat-option>
           <mat-option value="option1">Option 1</mat-option>
@@ -53,27 +54,31 @@
       <p>
         <!--    <mat-icon>expand_more</mat-icon>-->
         <button color="primary" mat-icon-button id="btn.toggle-adres-selectie" class="showing-button"
-                (click)="toggle()" matTooltip="Toon of verberg de over te nemen adres selectie">
+          (click)="toggle()" matTooltip="Toon of verberg de over te nemen adres selectie">
           <mat-icon>{{showing ? 'expand_less' : 'expand_more'}}</mat-icon>
           Adres gegevens overnemen
         </button>
       </p>
-      <div *ngIf="showing">
-        <p>
-          <button *ngFor="let adres of [{soortAdres: 'Huis'}, {soortAdres: 'Werk'}]; let i=index;" color="primary" mat-raised-button
-                  id="btn.adresgegevens.{{adres.soortAdres}}" style="margin: 1rem;"
-                  (click)="prefillAdres(adres.soortAdres)" type="submit">
-            <!--                  matTooltip="Neem adresvelden over uit het {{adres.soortAdres}}"-->
-            <mat-icon>content_copy</mat-icon>
-            {{adres.soortAdres}}
-          </button>
-          <button color="primary" mat-raised-button id="btn.adresgegevens.clear"
-                  (click)="prefillAdres(undefined)" type="submit" matTooltip="Maak de adres velden leeg">
-            <mat-icon>delete</mat-icon>
-            Leeg adresvelden
-          </button>
-        </p>
-      </div>
+      @if (showing) {
+        <div>
+          <p>
+            @for (adres of [{soortAdres: 'Huis'}, {soortAdres: 'Werk'}]; track adres; let i = $index) {
+              <button color="primary" mat-raised-button
+                id="btn.adresgegevens.{{adres.soortAdres}}" style="margin: 1rem;"
+                (click)="prefillAdres(adres.soortAdres)" type="submit">
+                <!--                  matTooltip="Neem adresvelden over uit het {{adres.soortAdres}}"-->
+                <mat-icon>content_copy</mat-icon>
+                {{adres.soortAdres}}
+              </button>
+            }
+            <button color="primary" mat-raised-button id="btn.adresgegevens.clear"
+              (click)="prefillAdres(undefined)" type="submit" matTooltip="Maak de adres velden leeg">
+              <mat-icon>delete</mat-icon>
+              Leeg adresvelden
+            </button>
+          </p>
+        </div>
+      }
     </div>
 
     <div class="actions">
@@ -94,31 +99,37 @@
           <mat-icon>{{expanding ? 'expand_less' : 'expand_more'}}</mat-icon>
         </button>
       </div>
-      <div *ngIf="expanding">
-          <button *ngFor="let family of families; let i=index;"
-                  color="primary"
-                  mat-raised-button
-                  id="btn.visit.{family.name}}" style="margin: 1rem;"
-                  (click)="prefillAdres(family)" type="submit"
-                  matTooltip="Fill in address of {{family.name}}">
-            <mat-icon>content_copy</mat-icon>
-            {{family.name}}
-          </button>
+      @if (expanding) {
+        <div>
+          @for (family of families; track family; let i = $index) {
+            <button
+              color="primary"
+              mat-raised-button
+              id="btn.visit.{family.name}}" style="margin: 1rem;"
+              (click)="prefillAdres(family)" type="submit"
+              matTooltip="Fill in address of {{family.name}}">
+              <mat-icon>content_copy</mat-icon>
+              {{family.name}}
+            </button>
+          }
           <button color="primary" mat-raised-button id="btn.visit.clear"
-                  (click)="prefillAdres({name: null, address: null})" type="submit" matTooltip="Erase address field">
+            (click)="prefillAdres({name: null, address: null})" type="submit" matTooltip="Erase address field">
             <mat-icon>delete</mat-icon>
             Remove address
           </button>
-      </div>
+        </div>
+      }
     </div>
 
 
     <div style="max-width: 50%;" class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSourceWithPageSize">
-        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
-          <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
-          <td mat-cell *matCellDef="let emp">{{ emp[column] }}</td>
-        </ng-container>
+        @for (column of displayedColumns; track column) {
+          <ng-container [matColumnDef]="column">
+            <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+            <td mat-cell *matCellDef="let emp">{{ emp[column] }}</td>
+          </ng-container>
+        }
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let emprow; columns: displayedColumns"></tr>
         <tr *matNoDataRow>
@@ -130,9 +141,9 @@
       <mat-toolbar>
         <mat-toolbar-row>
           <mat-paginator class="mat-footer-paginator"
-                         #paginatorPageSize
-                         [pageSizeOptions]="pageSizes"
-                         showFirstLastButtons
+            #paginatorPageSize
+            [pageSizeOptions]="pageSizes"
+            showFirstLastButtons
           ></mat-paginator>
         </mat-toolbar-row>
       </mat-toolbar>
@@ -140,10 +151,12 @@
 
     <div style="max-width: 50%;" class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSourceWithPageSize2">
-        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
-          <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
-          <td mat-cell *matCellDef="let emp">{{ emp[column] }}</td>
-        </ng-container>
+        @for (column of displayedColumns; track column) {
+          <ng-container [matColumnDef]="column">
+            <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+            <td mat-cell *matCellDef="let emp">{{ emp[column] }}</td>
+          </ng-container>
+        }
         <ng-container mat-footer-row matColumnDef="paginator">
           <td *matFooterCellDef [colSpan]="displayedColumns.length" class="mat-footer-paginator">
             <mat-paginator

@@ -4,30 +4,34 @@
   <form name="form" #form="ngForm">
     <table class="form-table">
       <tr>
-        <td><label>Username</label></td>
+        <td><label for="username">Username</label></td>
         <td><input id="username" name="username" #usernameValidation="ngModel" [(ngModel)]="username" required pattern="[a-z]{7,20}"></td>
       </tr>
       <tr>
         <td></td>
         <td>
-          <span *ngIf="usernameValidation.invalid && usernameValidation.touched">
-            Username should be between 7 and 20 characters long and only have lowercase characters
-          </span>
+          @if (usernameValidation.invalid && usernameValidation.touched) {
+            <span>
+              Username should be between 7 and 20 characters long and only have lowercase characters
+            </span>
+          }
         </td>
       </tr>
       <tr>
-        <td><label>Password</label></td>
+        <td><label for="password">Password</label></td>
         <td>
           <input id="password" name="password" type="password" #passwordValidation="ngModel" [(ngModel)]="password"
-                 required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!$%@#£€*?&])([a-zA-Z\d!$%@#£€*?&]{10,20})">
+            required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!$%@#£€*?&])([a-zA-Z\d!$%@#£€*?&]{10,20})">
         </td>
       </tr>
       <tr>
         <td></td>
         <td>
-          <span *ngIf="passwordValidation.invalid && passwordValidation.touched">
-            Password should be between 10 and 20 characters long and should have at least one lowercase, one uppercase, one digit and one special character ($%&#64;#£€*?&)
-          </span>
+          @if (passwordValidation.invalid && passwordValidation.touched) {
+            <span>
+              Password should be between 10 and 20 characters long and should have at least one lowercase, one uppercase, one digit and one special character ($%&#64;#£€*?&)
+            </span>
+          }
         </td>
       </tr>
       <tr>

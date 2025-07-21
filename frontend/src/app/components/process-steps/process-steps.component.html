@@ -2,35 +2,43 @@
 <div class="main-area page">
   <div>
     <button class="show-processes disabled-spinner" *ngrxLet="stepsObservable$; let done = complete" (click)="showProcessSteps()"
-            [disabled]="loadingProcessSteps" [ngClass]="{'not-allowed': !done && stepsObservable$}">
+      [disabled]="loadingProcessSteps" [ngClass]="{'not-allowed': !done && stepsObservable$}">
       {{loadingProcessSteps ? 'Processing' : 'Toon proces stappen'}}
     </button>
 
     <div *ngrxLet="stepsObservable$; let currentStep; let error = error; let done = complete" class="steps-area" [ngClass]="{'mandatory': currentStep?.mandatory}">
-      <div *ngIf="currentStep">
-        <div style="font-weight: bold">Stap {{currentStep.order}}</div>
-        <div [innerHTML]="currentStep.description"></div>
-      </div>
-      <div class="error" *ngIf="error">Er is een foutmelding opgetreden: {{error}}</div>
-      <div class="complete" *ngIf="done" data-test='submitIsVisible'>Alle stappen zijn uitgevoerd.</div>
+      @if (currentStep) {
+        <div>
+          <div style="font-weight: bold">Stap {{currentStep.order}}</div>
+          <div [innerHTML]="currentStep.description"></div>
+        </div>
+      }
+      @if (error) {
+        <div class="error">Er is een foutmelding opgetreden: {{error}}</div>
+      }
+      @if (done) {
+        <div class="complete" data-test='submitIsVisible'>Alle stappen zijn uitgevoerd.</div>
+      }
     </div>
   </div>
 
   <form name="form" #form="ngForm">
-    <label>Beschijf hieronder de nieuwe proces stap</label>
+    <label for="description">Beschijf hieronder de nieuwe proces stap</label>
     <textarea name="description" rows="5" cols="10" [(ngModel)]="editProcessStep.description" required minlength="4" maxlength="1000"></textarea>
     <div>
-      <label>Waar moet de nieuwe stap komen?</label>
-      <button class="disabled-spinner" style="position: relative; background-color: transparent; border: none; width: 0; height: 2em; top:-0.4em; left: 3em;"
-               [disabled]="loadingNumberOfStep"></button>
+      <label for="loadingNumberOfStep">Waar moet de nieuwe stap komen?</label>
+      <button name="loadingNumberOfStep" class="disabled-spinner" style="position: relative; background-color: transparent; border: none; width: 0; height: 2em; top:-0.4em; left: 3em;"
+      [disabled]="loadingNumberOfStep"></button>
       <select name="order" [(ngModel)]="editProcessStep.order" required [disabled]="loadingNumberOfStep">
         <option disabled>kies positie</option>
-<!--        <option *ngIf="loadingNumberOfStep" disabled>Loading...</option>-->
-        <option *ngFor="let nr of selectStepOptions" [value]="nr.value">{{nr.text}}</option>
+        <!--        <option *ngIf="loadingNumberOfStep" disabled>Loading...</option>-->
+        @for (nr of selectStepOptions; track nr) {
+          <option [value]="nr.value">{{nr.text}}</option>
+        }
       </select>
     </div>
     <div>
-      <label>Verplichte stap</label>
+      <label for="mandatory">Verplichte stap</label>
       <input name="mandatory" type="checkbox" [(ngModel)]="editProcessStep.mandatory">
     </div>
 

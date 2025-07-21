@@ -14,27 +14,34 @@
     <input type="radio" name="backgroundColor" [(ngModel)]="backgroundColor" [value]="'lightgreen'"> Blue<br>
     <br>
     Click here to trigger clicked-on-directive-element<br>
-    {{message}}<br>
-    {{info}}<br>
+    {{ message }}<br>
+    {{ info }}<br>
     <br>
-    {{exportDirective.directiveVariable}}
+    {{ exportDirective.directiveVariable }}
   </div>
 
-  <h1 *appStructuralDirective="true">True</h1><h1 *appStructuralDirective="false">False</h1>
+  <h1 *appStructuralDirective="true">True</h1>
+  <h1 *appStructuralDirective="false">False</h1>
 
   <div attr-dir="lightgrey">
     Using appSingleHostElementAttributeDirective (attr-dir)<br>
     click here to change background color.<br>
     <br>
-    Simple two way binding: <input type="text" [(ngModel)]="inputText"><input type="text" [(ngModel)]="inputText"> {{inputText}}<br>
-    Two way binding with get and set: <input type="text" [(ngModel)]="inputValue"> {{inputValue}}<br>
+    Simple two way binding: <input type="text" [(ngModel)]="inputText"><input type="text"
+                                                                              [(ngModel)]="inputText"> {{ inputText }}
+    <br>
+    Two way binding with get and set: <input type="text" [(ngModel)]="inputValue"> {{ inputValue }}<br>
   </div>
 
-  <div *ngFor="let nr of nummers; let i = index;">Nr {{nr + i}}</div>
+  @for (nr of nummers; track nr; let i = $index) {
+    <div>Nr {{ nr + i }}</div>
+  }
 </div>
 
-<div style="width: 30em; height: 10em; border-radius: 1em; background-color: #aaffaa; margin-left: 5em; display: flex; justify-content: center; align-items:center;">
-  <span style="background-color: #46a35e; line-height: 5em; display: flex; justify-content: center; align-items:center;">
+<div
+  style="width: 30em; height: 10em; border-radius: 1em; background-color: #aaffaa; margin-left: 5em; display: flex; justify-content: center; align-items:center;">
+  <span
+    style="background-color: #46a35e; line-height: 5em; display: flex; justify-content: center; align-items:center;">
     This text has to be in the center and the middle.
   </span>
 </div>

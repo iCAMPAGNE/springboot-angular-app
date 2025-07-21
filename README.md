@@ -1,5 +1,5 @@
 # SpringbootAngularApp
-Example of a full-stack application using Java 21, Spring Boot 3, REST, Angular 19.
+Example of a full-stack application using Java 21, Spring Boot 3, REST, Angular 20.
 
 # How to build and run the application
 In root folder: `mvn clean install`

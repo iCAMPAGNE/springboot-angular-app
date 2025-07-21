@@ -11,6 +11,7 @@ import {MatPaginator} from "@angular/material/paginator";
     standalone: false
 })
 export class MaterialdesignComponent implements OnInit, AfterViewInit {
+  writeControl = new FormControl(false);
   directionControl = new FormControl(false);
   hideRequiredControl = new FormControl(false);
   floatLabelControl = new FormControl('auto' as FloatLabelType);
@@ -71,7 +72,7 @@ export class MaterialdesignComponent implements OnInit, AfterViewInit {
   }
 
   preventDefault() {
-    if (this.readonly) {
+    if (!this.writeControl.value) {
       this.directionControl.setValue(this.direction);
     }
   }
