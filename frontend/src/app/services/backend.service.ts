@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ProcessStep} from "../models/api.model";
@@ -15,7 +15,7 @@ export class BackendService {
         })
     };
 
-    constructor(private readonly httpClient: HttpClient) { }
+  private readonly httpClient: HttpClient = inject(HttpClient);
 
     getVersion():Observable<any> {
         return this.httpClient.get(this.rootContex + 'version');

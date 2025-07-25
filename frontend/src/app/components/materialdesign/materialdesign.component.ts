@@ -1,16 +1,61 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormControl} from '@angular/forms';
-import {FloatLabelType} from '@angular/material/form-field';
-import {MatTableDataSource} from "@angular/material/table";
+import {AfterViewInit, Component, inject, ViewChild} from '@angular/core';
+import {FormBuilder, FormControl, ReactiveFormsModule} from '@angular/forms';
+import {FloatLabelType, MatFormField, MatLabel} from '@angular/material/form-field';
+import {
+  MatCell, MatCellDef,
+  MatColumnDef, MatFooterCellDef,
+  MatFooterRowDef, MatHeaderCell, MatHeaderCellDef,
+  MatHeaderRowDef,
+  MatNoDataRow, MatRowDef,
+  MatTable,
+  MatTableDataSource
+} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
+import {MatCheckbox} from "@angular/material/checkbox";
+import {MatSlideToggle} from "@angular/material/slide-toggle";
+import {MatRadioButton, MatRadioGroup} from "@angular/material/radio";
+import {MatIcon} from "@angular/material/icon";
+import {MatOption, MatSelect} from "@angular/material/select";
+import {MatTooltip} from "@angular/material/tooltip";
+import {MatToolbar, MatToolbarRow} from "@angular/material/toolbar";
+import {MatInput} from "@angular/material/input";
 
 @Component({
-    selector: 'app-materialdesign',
-    templateUrl: './materialdesign.component.html',
-    styleUrls: ['./materialdesign.component.scss'],
-    standalone: false
+  selector: 'app-materialdesign',
+  templateUrl: './materialdesign.component.html',
+  imports: [
+    ReactiveFormsModule,
+    MatCheckbox,
+    MatSlideToggle,
+    MatRadioGroup,
+    MatRadioButton,
+    MatFormField,
+    MatIcon,
+    MatPaginator,
+    MatTable,
+    MatColumnDef,
+    MatLabel,
+    MatSelect,
+    MatOption,
+    MatTooltip,
+    MatToolbar,
+    MatToolbarRow,
+    MatFooterRowDef,
+    MatNoDataRow,
+    MatHeaderRowDef,
+    MatRowDef,
+    MatFooterCellDef,
+    MatHeaderCellDef,
+    MatCell,
+    MatHeaderCell,
+    MatCellDef,
+    MatInput
+  ],
+  styleUrls: ['./materialdesign.component.scss']
 })
-export class MaterialdesignComponent implements OnInit, AfterViewInit {
+export class MaterialdesignComponent implements AfterViewInit {
+  private _formBuilder: FormBuilder = inject(FormBuilder);
+
   writeControl = new FormControl(false);
   directionControl = new FormControl(false);
   hideRequiredControl = new FormControl(false);
@@ -58,17 +103,11 @@ export class MaterialdesignComponent implements OnInit, AfterViewInit {
   dataSource2 = new MatTableDataSource(this.elements);
   dataSourceWithPageSize2 = new MatTableDataSource(this.elements);
 
-
-  constructor(private _formBuilder: FormBuilder) {}
-
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSourceWithPageSize.paginator = this.paginatorPageSize;
     this.dataSource2.paginator = this.paginator2;
     this.dataSourceWithPageSize2.paginator = this.paginatorPageSize2;
-  }
-
-  ngOnInit(): void {
   }
 
   preventDefault() {

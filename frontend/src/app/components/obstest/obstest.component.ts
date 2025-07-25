@@ -1,10 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable, Observer, of, Subject} from "rxjs";
+import {FormsModule} from "@angular/forms";
+import {AsyncPipe} from "@angular/common";
+import {LetDirective} from "@ngrx/component";
 
 @Component({
-    selector: 'app-obstest',
-    templateUrl: './obstest.component.html',
-    standalone: false
+  selector: 'app-obstest',
+  templateUrl: './obstest.component.html',
+  imports: [
+    FormsModule,
+    AsyncPipe,
+    LetDirective
+  ],
+  standalone: true
 })
 export class ObstestComponent implements OnInit {
   showRightPanel: boolean = false;

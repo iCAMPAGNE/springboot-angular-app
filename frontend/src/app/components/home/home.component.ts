@@ -1,11 +1,16 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FirstService} from "../../services/first.service";
+import {FormsModule} from "@angular/forms";
+import {NgClass} from "@angular/common";
 
 @Component({
-    selector: 'app-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss'],
-    standalone: false
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  imports: [
+    FormsModule,
+    NgClass
+  ],
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
   demoButton1Disabled: boolean = false;

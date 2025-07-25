@@ -1,12 +1,21 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {interval, Observable} from "rxjs";
 import {map, take} from "rxjs/operators";
+import {AsyncPipe} from "@angular/common";
+import {FormsModule} from "@angular/forms";
+import {AttributeDirective} from "../../directives/attribute.directive";
+import {StructuralDirective} from "../../directives/structural.directive";
 
 @Component({
-    selector: 'app-dynamic-styling',
-    templateUrl: './dynamic-styling.component.html',
-    styleUrls: ['./dynamic-styling.component.scss'],
-    standalone: false
+  selector: 'app-dynamic-styling',
+  templateUrl: './dynamic-styling.component.html',
+  imports: [
+    AsyncPipe,
+    FormsModule,
+    AttributeDirective,
+    StructuralDirective
+  ],
+  styleUrls: ['./dynamic-styling.component.scss']
 })
 export class DynamicStylingComponent {
 
@@ -17,11 +26,6 @@ export class DynamicStylingComponent {
   inputText: string = 'Initial';
 
   _inputValue: string = '';
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
   message$: Observable<string> | undefined;
 

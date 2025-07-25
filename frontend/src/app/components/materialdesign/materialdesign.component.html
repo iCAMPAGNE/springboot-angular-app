@@ -1,5 +1,3 @@
-<navigatie-menu></navigatie-menu>
-
 <div class="example-container">
   <form [formGroup]="options">
     <mat-checkbox [formControl]="writeControl">Enable write</mat-checkbox>
@@ -13,10 +11,10 @@
 
     <mat-checkbox [formControl]="hideRequiredControl">Hide required marker</mat-checkbox>
     <div>
-      <label>Float label: </label>
+      <label for="floatLabel">Float label: </label>
       <mat-radio-group [formControl]="floatLabelControl">
-        <mat-radio-button value="auto">Auto</mat-radio-button>
-        <mat-radio-button value="always">Always</mat-radio-button>
+        <mat-radio-button name="floatLabel" value="auto">Auto</mat-radio-button>
+        <mat-radio-button name="floatLabel" value="always">Always</mat-radio-button>
       </mat-radio-group>
     </div>
 

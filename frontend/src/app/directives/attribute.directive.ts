@@ -1,11 +1,21 @@
-import {Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output, SimpleChange} from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  EventEmitter,
+  HostBinding,
+  HostListener,
+  inject,
+  Input, OnChanges, OnInit,
+  Output,
+  SimpleChange
+} from '@angular/core';
 
 @Directive({
     selector: '[appAttribute]',
-    exportAs: 'exportDirective',
-    standalone: false
+    exportAs: 'exportDirective'
 })
-export class AttributeDirective {
+export class AttributeDirective implements OnInit, OnChanges {
+  private eleRef: ElementRef = inject(ElementRef);
 
   directiveVariable: string = 'Defined in directive, exposed in template';
 
@@ -20,13 +30,13 @@ export class AttributeDirective {
   @Output('host-element-binding-click') // used by custom event
   hostElementBindingClick = new EventEmitter<string>();
 
-  constructor(private eleRef: ElementRef) {
-    eleRef.nativeElement.style.margin = '1em';
-    eleRef.nativeElement.style.padding = '1em';
-    eleRef.nativeElement.style.borderRadius = '0.2em';
+  constructor() {
+    this.eleRef.nativeElement.style.margin = '1em';
+    this.eleRef.nativeElement.style.padding = '1em';
+    this.eleRef.nativeElement.style.borderRadius = '0.2em';
 
     // Binding to a custom event
-    eleRef.nativeElement.addEventListener('click', (e:any) => {
+    this.eleRef.nativeElement.addEventListener('click', (e:any) => {
       console.log('clickedOnDirectiveElement', e);
       this.clickedOnDirectiveElement.emit('clickedOnDirectiveElement emitted');
     })
@@ -38,7 +48,7 @@ export class AttributeDirective {
   }
 
   ngOnChanges(changes: {[proerty: string]: SimpleChange}) {
-    let change = changes["bgColor"];
+    const change = changes["bgColor"];
     if (!change.isFirstChange()) {
       this.eleRef.nativeElement.style.background = this.bgColor;
     }

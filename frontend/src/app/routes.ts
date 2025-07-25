@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {Routes} from '@angular/router';
 import {HomeComponent} from "./components/home/home.component";
 import {ObstestComponent} from "./components/obstest/obstest.component";
 import {MousewheelScrollingComponent} from "./components/mousewheel-scrolling/mousewheel-scrolling.component";
@@ -12,9 +11,9 @@ import {LoginComponent} from "./components/login/login.component";
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'home', component: HomeComponent },
+    { path: 'home', component: HomeComponent, title: 'Home page' },
     { path: 'login', component: LoginComponent },
-    { path: 'dynamic-styling', component: DynamicStylingComponent },
+    { path: 'dynamic-styling', component: DynamicStylingComponent, title: 'Dynamic styling' },
     { path: 'observableTest', component: ObstestComponent },
     { path: 'processSteps', component: ProcessStepsComponent },
     { path: 'security', component: SecurityComponent },
@@ -23,8 +22,4 @@ const routes: Routes = [
     { path: 'mousewheelScrolling', component: MousewheelScrollingComponent }
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+export default routes;

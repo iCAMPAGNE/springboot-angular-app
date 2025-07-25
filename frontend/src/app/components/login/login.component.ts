@@ -1,18 +1,24 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { SecurityService } from '../../services/security.service';
 import {Router} from "@angular/router";
+import {FormsModule} from "@angular/forms";
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    standalone: false
+  selector: 'app-login',
+  imports: [
+    FormsModule
+  ],
+  templateUrl: './login.component.html'
 })
 export class LoginComponent {
   username: string = '';
   password: string = '';
   error = '';
 
-  constructor(private router: Router, private securityServer: SecurityService) {
+  private router: Router = inject(Router);
+  private securityServer: SecurityService = inject(SecurityService);
+
+  constructor() {
     sessionStorage.setItem('private', 'false');
   }
 

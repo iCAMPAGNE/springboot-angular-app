@@ -1,14 +1,11 @@
-import {Directive, Input, TemplateRef, ViewContainerRef} from '@angular/core';
+import {Directive, inject, Input, TemplateRef, ViewContainerRef} from '@angular/core';
 
 @Directive({
-    selector: '[appStructuralDirective]',
-    standalone: false
+    selector: '[appStructuralDirective]'
 })
 export class StructuralDirective {
-
-  constructor(
-    private templateRef: TemplateRef<any>,
-    private viewContainer: ViewContainerRef) { }
+  private templateRef: TemplateRef<any> = inject(TemplateRef);
+  private viewContainer: ViewContainerRef = inject(ViewContainerRef);
 
   @Input() set appStructuralDirective(condition: boolean) {
     if (!condition) {

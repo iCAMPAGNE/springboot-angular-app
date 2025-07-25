@@ -3,7 +3,7 @@ import {AfterViewChecked, AfterViewInit, Component, ElementRef, HostListener, On
 @Component({
     selector: 'app-mousewheel-scrolling',
     templateUrl: './mousewheel-scrolling.component.html',
-    standalone: false
+    standalone: true
 })
 export class MousewheelScrollingComponent implements OnInit, AfterViewChecked, AfterViewInit, OnDestroy {
 

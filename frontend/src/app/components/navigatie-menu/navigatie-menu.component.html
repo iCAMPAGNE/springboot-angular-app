@@ -1,14 +1,14 @@
 <div class="menu-header">
   <div class="menu-bar">
-    <a href="home" ><button [ngClass]="{'currentPage':currentPage == 'home' || currentPage == ''}">Home</button></a>
-    <a href="dynamic-styling"><button [ngClass]="{'currentPage':currentPage == 'dynamic-styling'}">Dynamic styling</button></a>
-    <a href="observableTest"><button [ngClass]="{'currentPage':currentPage == 'observableTest'}">Observables</button></a>
-    <a href="processSteps"><button [ngClass]="{'currentPage':currentPage == 'processSteps'}">Process steps</button></a>
-    <a href="security"><button [ngClass]="{'currentPage':currentPage == 'security'}">Security</button></a>
-    <a href="materialdesign"><button [ngClass]="{'currentPage':currentPage == 'materialdesign'}">Material design</button></a>
-    <a href="three-d"><button [ngClass]="{'currentPage':currentPage == 'three-d'}">3D</button></a>
-    <a href="mousewheelScrolling"><button [ngClass]="{'currentPage':currentPage == 'mousewheelScrolling'}">Mousewheel scrolling</button></a>
-    <a href="login"><button [ngClass]="{'currentPage':currentPage == 'login'}">{{privateStatus}}</button></a>
+    <a [routerLink]="['/']"><button [ngClass]="{'currentPage':currentPage === '/home' || currentPage === '/'}">Home</button></a>
+    <a [routerLink]="['/dynamic-styling']"><button [ngClass]="{'currentPage':currentPage === '/dynamic-styling'}">Dynamic styling</button></a>
+    <a [routerLink]="['/observableTest']"><button [ngClass]="{'currentPage':currentPage === '/observableTest'}">Observables</button></a>
+    <a [routerLink]="['/processSteps']"><button [ngClass]="{'currentPage':currentPage === '/processSteps'}">Process steps</button></a>
+    <a [routerLink]="['/security']"><button [ngClass]="{'currentPage':currentPage === '/security'}">Security</button></a>
+    <a [routerLink]="['/materialdesign']"><button [ngClass]="{'currentPage':currentPage === '/materialdesign'}">Material design</button></a>
+    <a [routerLink]="['/three-d']"><button [ngClass]="{'currentPage':currentPage === '/three-d'}">3D</button></a>
+    <a [routerLink]="['/mousewheelScrolling']"><button [ngClass]="{'currentPage':currentPage === '/mousewheelScrolling'}">Mousewheel scrolling</button></a>
+    <a [routerLink]="['/login']"><button [ngClass]="{'currentPage':currentPage === '/login'}">{{privateStatus}}</button></a>
   </div>
 </div>
 

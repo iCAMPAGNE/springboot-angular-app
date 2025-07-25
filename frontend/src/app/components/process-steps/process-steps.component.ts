@@ -1,15 +1,25 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {BackendService} from "../../services/backend.service";
 import {Observable, Observer, Subscription} from "rxjs";
 import {ProcessStep} from "../../models/api.model";
+import {FormsModule} from "@angular/forms";
+import {NgClass} from "@angular/common";
+import {LetDirective} from "@ngrx/component";
 
 @Component({
-    selector: 'app-process-steps',
-    templateUrl: './process-steps.component.html',
-    styleUrls: ['./process-steps.component.scss'],
-    standalone: false
+  selector: 'app-process-steps',
+  templateUrl: './process-steps.component.html',
+  styleUrls: ['./process-steps.component.scss'],
+  imports: [
+    FormsModule,
+    NgClass,
+    LetDirective
+  ],
+  standalone: true
 })
 export class ProcessStepsComponent implements OnInit {
+  private backendService: BackendService = inject(BackendService);
+
   stepDescription$: Subscription | undefined;
   stepsObservable$: Observable<any> | undefined;
   selectStepOptions: any[] = [{value:-1,text:'Loading...'}];
@@ -18,9 +28,6 @@ export class ProcessStepsComponent implements OnInit {
   submittingNewStep: boolean = false;
   loadingProcessSteps: boolean = false;
   message: string = '';
-
-  constructor(private backendService: BackendService) {
-  }
 
   ngOnInit() {
     this.updateSteps();
