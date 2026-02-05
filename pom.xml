@@ -14,7 +14,7 @@
     <groupId>nl.icampagne.study</groupId>
     <artifactId>springboot-angular-app</artifactId>
     <packaging>pom</packaging>
-    <version>0.4.9</version>
+    <version>0.5.0</version>
 
     <modules>
         <module>frontend</module>
