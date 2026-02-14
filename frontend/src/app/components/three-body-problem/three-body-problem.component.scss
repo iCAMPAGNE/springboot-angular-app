@@ -1,0 +1,19 @@
+.animation-page {
+  width: 101vw;
+  height: 100vh;
+  margin-left: -1vw;
+  background-color: black;
+  color: green;
+  border: double white 5px;
+}
+
+.circle {
+  position: absolute;
+  top: var(--offsety);
+  left: var(--offsetx);
+  height: var(--radius);
+  width: var(--radius);
+  border-radius: 50%;
+  display: inline-block;
+  border: black solid 2px;
+}

@@ -1,0 +1,16 @@
+<div class="animation-page">
+  @for (movingObject of movingObjects; track movingObject) {
+    <div class="circle"
+         [style.background-color]="movingObject.objectColor"
+         style="--offsetx: {{movingObject.posX}}px; --offsety: {{movingObject.posY}}px; --radius: {{movingObject.mass}}px;">
+    </div>
+  }
+
+  @for (movingObject of cclObjects; track movingObject) {
+    <div class="circle"
+         [style.border-color]="movingObject.objectColor"
+         style="--offsetx: {{movingObject.posX}}px; --offsety: {{movingObject.posY}}px; --radius: {{movingObject.mass}}px;">
+    </div>
+  }
+
+</div>

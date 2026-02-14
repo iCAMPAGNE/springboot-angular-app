@@ -1,6 +1,6 @@
 {
   "name": "springboot-angular-app",
-  "version": "0.5.1",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json --port 4212 -o",
